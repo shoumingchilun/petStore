@@ -17,6 +17,9 @@ public class Transaction {
         UserId = userId;
     }
 
+    public Transaction() {
+    }
+
     public String getSpecificInfo() {
         return specificInfo;
     }

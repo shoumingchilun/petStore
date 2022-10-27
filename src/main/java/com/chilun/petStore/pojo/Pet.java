@@ -12,6 +12,10 @@ public class Pet {
     private String description;
     private String picture;
     private float prices;
+
+    public Pet() {
+    }
+
     private int amount;//可购买数量
 
     public String getName() {

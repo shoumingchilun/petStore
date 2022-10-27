@@ -12,4 +12,6 @@ public class Cart {
     private List<CartItem> items;
     private float totalPrice;
 
+    public Cart() {
+    }
 }

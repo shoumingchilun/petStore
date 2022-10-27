@@ -10,8 +10,8 @@ public class ConnUtil {
     //private static ThreadLocal<Object> threadLocal2 = new ThreadLocal<>();
     //private static ThreadLocal<Object> threadLocal3 = new ThreadLocal<>();
 
-    public static final String DRIVER = "com.mysql.jdbc.Driver" ;
-    public static final String URL = "jdbc:mysql://localhost:3306/petstoredb?useUnicode=true&characterEncoding=utf-8&useSSL=false";
+    public static final String DRIVER = "com.mysql.cj.jdbc.Driver" ;
+    public static final String URL = "jdbc:mysql://localhost:3306/petstoredb?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false";
     public static final String USER = "root";
     public static final String PWD = "20030322" ;
 

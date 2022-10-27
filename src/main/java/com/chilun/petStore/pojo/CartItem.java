@@ -10,6 +10,9 @@ public class CartItem {
     private int userID;
     private int num;
 
+    public CartItem() {
+    }
+
     public int getPetID() {
         return petID;
     }

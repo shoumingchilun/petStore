@@ -9,7 +9,24 @@ public class User {
     private int userID;
     private String name;
     private String address;
+    private String password;
+    private String account;
     private Cart cart;
+
+    public User() {
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userID=" + userID +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", password='" + password + '\'' +
+                ", account='" + account + '\'' +
+                ", cart=" + cart +
+                '}';
+    }
 
     public int getUserID() {
         return userID;
@@ -43,10 +60,28 @@ public class User {
         this.name = name;
     }
 
-    public User(int userID, String name, String address, Cart cart) {
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
+    }
+
+    public User(int userID, String name, String address, String password, String account, Cart cart) {
         this.userID = userID;
         this.name = name;
         this.address = address;
+        this.password = password;
+        this.account = account;
         this.cart = cart;
     }
 }
