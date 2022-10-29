@@ -14,6 +14,10 @@ public class UserDAO extends BaseDAO<User> {
     }
     //根据User添加新用户
     public void addUser(User user){
+        if (getUserByAcc(user.getAccount())!=null){
+            System.out.println("重复添加");
+            return;
+        }
         String sql = "insert into users values(0,?,?,?,?)";
         super.executeUpdate(sql,user.getName(),user.getAddress(),user.getPassword(),user.getAccount());
     }

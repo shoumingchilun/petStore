@@ -177,8 +177,8 @@ public abstract class BaseDAO<T> {
                 T entity = (T)entityClass.newInstance();
 
                 for(int i = 0 ; i<columnCount;i++){
-                    String columnName = rsmd.getColumnName(i+1);            //fid   fname   price
-                    Object columnValue = rs.getObject(i+1);     //33    苹果      5
+                    String columnName = rsmd.getColumnName(i+1);
+                    Object columnValue = rs.getObject(i+1);
                     setValue(entity,columnName,columnValue);
                 }
                 list.add(entity);

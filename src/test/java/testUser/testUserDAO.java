@@ -18,13 +18,13 @@ public class testUserDAO {
 
     @Test
     public void testAdd(){
-        User user = new User(0,"chilun2","北京","123123","chilun2",null);
+        User user = new User(0,"chilun2","北京","123123","chilun4",null);
         dao.addUser(user);
     }
 
     @Test
     public void testUpdate(){
-        int chilun2 = dao.getUserByAcc("chilun2").getUserID();
+        long chilun2 = dao.getUserByAcc("chilun2").getUserID();
         User user = new User(chilun2,"chilun2","浙江","123123","chilun2",null);
         dao.updateUserById(user);
     }

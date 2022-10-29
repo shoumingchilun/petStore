@@ -6,7 +6,7 @@ import java.math.BigDecimal;
  * @auther 齿轮
  * @create 2022-10-26-15:40
  *
- * 封装查询条件
+ * 封装查询条件：价格、物种、页面
  */
 public class SelectInfo {
     private int pageNo;
@@ -16,7 +16,7 @@ public class SelectInfo {
     private float maxPrice = Integer.MAX_VALUE;
 
     //宠物种类
-    private int species = 0;
+    private Integer species;
 
     public int getPageNo() {
         return pageNo;
@@ -42,8 +42,22 @@ public class SelectInfo {
         this.maxPrice = maxPrice;
     }
 
-    public int getSpecies() {
+    public Integer getSpecies() {
         return species;
+    }
+
+    public SelectInfo(int pageNo, float minPrice, float maxPrice) {
+        this.pageNo = pageNo;
+        this.minPrice = minPrice;
+        this.maxPrice = maxPrice;
+        species=null;
+    }
+
+    public SelectInfo(int pageNo, float minPrice, float maxPrice, Integer species) {
+        this.pageNo = pageNo;
+        this.minPrice = minPrice;
+        this.maxPrice = maxPrice;
+        this.species = species;
     }
 
     public void setSpecies(int species) {

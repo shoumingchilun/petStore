@@ -6,7 +6,7 @@ package com.chilun.petStore.pojo;
  * 用户类
  */
 public class User {
-    private int userID;
+    private long userID;
     private String name;
     private String address;
     private String password;
@@ -28,11 +28,11 @@ public class User {
                 '}';
     }
 
-    public int getUserID() {
+    public long getUserID() {
         return userID;
     }
 
-    public void setUserID(int userID) {
+    public void setUserID(long userID) {
         this.userID = userID;
     }
 
@@ -76,7 +76,7 @@ public class User {
         this.account = account;
     }
 
-    public User(int userID, String name, String address, String password, String account, Cart cart) {
+    public User(long userID, String name, String address, String password, String account, Cart cart) {
         this.userID = userID;
         this.name = name;
         this.address = address;

@@ -1,22 +1,24 @@
 package com.chilun.petStore.pojo;
 
+import java.math.BigDecimal;
+
 /**
  * @auther 齿轮
  * @create 2022-10-26-15:16
  * 宠物类
  */
 public class Pet {
-    private int petID;
-    private int species;
+    private long petID;
+    private long species;
     private String Name;
     private String description;
     private String picture;
-    private float prices;
+    private BigDecimal prices;
 
     public Pet() {
     }
 
-    private int amount;//可购买数量
+    private long amount;//可购买数量
 
     public String getName() {
         return Name;
@@ -42,7 +44,7 @@ public class Pet {
         this.picture = picture;
     }
 
-    public Pet(int petID, int species, String name, String description, String picture, float prices, int amount) {
+    public Pet(long petID, long species, String name, String description, String picture, BigDecimal prices, long amount) {
         this.petID = petID;
         this.species = species;
         Name = name;
@@ -52,35 +54,48 @@ public class Pet {
         this.amount = amount;
     }
 
-    public int getPetID() {
+    public long getPetID() {
         return petID;
     }
 
-    public void setPetID(int petID) {
+    public void setPetID(long petID) {
         this.petID = petID;
     }
 
-    public int getSpecies() {
+    public long getSpecies() {
         return species;
     }
 
-    public void setSpecies(int species) {
+    public void setSpecies(long species) {
         this.species = species;
     }
 
-    public float getPrices() {
+    public BigDecimal getPrices() {
         return prices;
     }
 
-    public void setPrices(float prices) {
+    public void setPrices(BigDecimal prices) {
         this.prices = prices;
     }
 
-    public int getAmount() {
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "petID=" + petID +
+                ", species=" + species +
+                ", Name='" + Name + '\'' +
+                ", description='" + description + '\'' +
+                ", picture='" + picture + '\'' +
+                ", prices=" + prices +
+                ", amount=" + amount +
+                '}';
+    }
+
+    public long getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(long amount) {
         this.amount = amount;
     }
 }
