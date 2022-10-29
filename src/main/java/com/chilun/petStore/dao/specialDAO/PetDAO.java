@@ -34,10 +34,10 @@ public class PetDAO extends BaseDAO<Pet> {
         String sql = "select * from pets where ";
         if (info.getSpecies() != null) {
             sql += "species = ? && prices <= ? && prices >= ? LIMIT ? , 5";
-            return super.executeQuery(sql, info.getSpecies(), info.getMaxPrice(), info.getMinPrice(), info.getPageNo());
+            return super.executeQuery(sql, info.getSpecies(), info.getMaxPrice(), info.getMinPrice(), info.getPageNo()*5);
         } else {
             sql += "prices <= ? && prices >= ? LIMIT ? , 5";
-            return super.executeQuery(sql, info.getMaxPrice(), info.getMinPrice(), info.getPageNo());
+            return super.executeQuery(sql, info.getMaxPrice(), info.getMinPrice(), info.getPageNo()*5);
         }
     }
 }
