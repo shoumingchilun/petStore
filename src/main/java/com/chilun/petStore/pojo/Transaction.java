@@ -6,14 +6,14 @@ package com.chilun.petStore.pojo;
  * 已完成交易类
  */
 public class Transaction {
-    private int UserId;
+    private long UserId;
     private String specificInfo;
 
-    public int getUserId() {
+    public long getUserId() {
         return UserId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(long userId) {
         UserId = userId;
     }
 
@@ -28,8 +28,16 @@ public class Transaction {
         this.specificInfo = specificInfo;
     }
 
-    public Transaction(int userId, String specificInfo) {
+    public Transaction(long userId, String specificInfo) {
         UserId = userId;
         this.specificInfo = specificInfo;
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "UserId=" + UserId +
+                ", specificInfo='" + specificInfo + '\'' +
+                '}';
     }
 }
