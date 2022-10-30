@@ -14,11 +14,11 @@ public class Pet {
     private String description;
     private String picture;
     private BigDecimal prices;
+    private long amount;//可购买数量
+
 
     public Pet() {
     }
-
-    private long amount;//可购买数量
 
     public String getName() {
         return name;

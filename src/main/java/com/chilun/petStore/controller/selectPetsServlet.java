@@ -22,54 +22,61 @@ public class selectPetsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String pageNoStr = req.getParameter("pageNo");
-        String minPriceStr = req.getParameter("minPrice");
-        String maxPriceStr = req.getParameter("maxPrice");
-        String speciesStr = req.getParameter("species");
-        Page<Pet> page = (Page<Pet>) req.getAttribute("page");
+        String back = req.getParameter("back");
+        if (back == null) {
+            System.out.println("是null");
+            String pageNoStr = req.getParameter("pageNo");
+            String minPriceStr = req.getParameter("minPrice");
+            String maxPriceStr = req.getParameter("maxPrice");
+            String speciesStr = req.getParameter("species");
 
-        int showPageNo = 1;
-        BigDecimal minPrice = new BigDecimal("0");
-        BigDecimal maxPrice = new BigDecimal(Integer.MAX_VALUE);
-        Integer species = null;
+            Page<Pet> page = (Page<Pet>) req.getSession().getAttribute("page");
 
-        try {
-            if (pageNoStr != null)
-                showPageNo = Integer.parseInt(pageNoStr);
-        } catch (NumberFormatException e) {
-        }
-        try {
-            if (minPriceStr != null)
-                minPrice = new BigDecimal(minPriceStr);
-        } catch (NumberFormatException e) {
-        }
-        try {
-            if (maxPriceStr != null)
-                maxPrice = new BigDecimal(maxPriceStr);
-        } catch (NumberFormatException e) {
-        }
+            int showPageNo = 1;
+            BigDecimal minPrice = new BigDecimal("0");
+            BigDecimal maxPrice = new BigDecimal(Integer.MAX_VALUE);
+            Integer species = null;
 
-        if (showPageNo < 1) showPageNo = 1;
-        if (page != null)
-            if (showPageNo > page.getNumOfPage() + 1) showPageNo = page.getNumOfPage() + 1;
-
-        SelectInfo info = new SelectInfo(showPageNo - 1, minPrice.floatValue(), maxPrice.floatValue());
-        if (speciesStr != null) {
-            System.out.println("进入物种筛选");
             try {
-                species = Integer.parseInt(speciesStr);
+                if (pageNoStr != null)
+                    showPageNo = Integer.parseInt(pageNoStr);
             } catch (NumberFormatException e) {
             }
-            info = new SelectInfo(showPageNo - 1, minPrice.floatValue(), maxPrice.floatValue(), species);
+            try {
+                if (minPriceStr != null)
+                    minPrice = new BigDecimal(minPriceStr);
+            } catch (NumberFormatException e) {
+            }
+            try {
+                if (maxPriceStr != null)
+                    maxPrice = new BigDecimal(maxPriceStr);
+            } catch (NumberFormatException e) {
+            }
+
+            if (showPageNo < 1) showPageNo = 1;
+            if (page != null)
+                if (showPageNo > page.getNumOfPage() + 1) showPageNo = page.getNumOfPage() + 1;
+
+            SelectInfo info = new SelectInfo(showPageNo - 1, minPrice.floatValue(), maxPrice.floatValue());
+            if (speciesStr != null) {
+                System.out.println("进入物种筛选");
+                try {
+                    species = Integer.parseInt(speciesStr);
+                } catch (NumberFormatException e) {
+                }
+                info = new SelectInfo(showPageNo - 1, minPrice.floatValue(), maxPrice.floatValue(), species);
+            }
+
+            page = service.getPage(info);
+
+            System.out.println(page);
+            req.getSession().setAttribute("page", page);
+
+            req.getRequestDispatcher("/WEB-INF/selectPet/selectPet.jsp").forward(req, resp);
+        }else{
+            System.out.println("不是null");
+            req.getRequestDispatcher("/WEB-INF/selectPet/selectPet.jsp").forward(req, resp);
         }
-
-        page = service.getPage(info);
-
-        System.out.println(page);
-
-        req.setAttribute("page", page);
-
-        req.getRequestDispatcher("/WEB-INF/selectPet/selectPet.jsp").forward(req, resp);
     }
 
     @Override

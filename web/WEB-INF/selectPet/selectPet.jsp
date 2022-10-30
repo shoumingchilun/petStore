@@ -27,7 +27,7 @@
         <c:forEach items="${page.list }" var="pet">
             <tr>
                 <td>
-                    名称:&nbsp;${pet.name}
+                    名称:&nbsp;<a href="pet?petID=${pet.petID}">${pet.name}</a>
                 </td>
                 <td>
                     简介:&nbsp;${pet.description}

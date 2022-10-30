@@ -22,4 +22,21 @@
         <url-pattern>/select</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>com.chilun.petStore.controller.CartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/cart</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PetServlet</servlet-name>
+        <servlet-class>com.chilun.petStore.controller.PetServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PetServlet</servlet-name>
+        <url-pattern>/pet</url-pattern>
+    </servlet-mapping>
 </web-app>
