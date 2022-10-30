@@ -50,4 +50,10 @@ public class testPetDAO {
         SelectInfo info2 = new SelectInfo(1, 0, 10000);
         petDAO.getSelectPet(info2).forEach(System.out::println);
     }
+
+    @Test
+    public void testNum(){
+        SelectInfo info2 = new SelectInfo(1, 1000, 10000);
+        System.out.println(petDAO.getNumOfSelectPet(info2));
+    }
 }

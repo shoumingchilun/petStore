@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 public class Pet {
     private long petID;
     private long species;
-    private String Name;
+    private String name;
     private String description;
     private String picture;
     private BigDecimal prices;
@@ -21,11 +21,11 @@ public class Pet {
     private long amount;//可购买数量
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        name = name;
     }
 
     public String getDescription() {
@@ -47,7 +47,7 @@ public class Pet {
     public Pet(long petID, long species, String name, String description, String picture, BigDecimal prices, long amount) {
         this.petID = petID;
         this.species = species;
-        Name = name;
+        this.name = name;
         this.description = description;
         this.picture = picture;
         this.prices = prices;
@@ -83,7 +83,7 @@ public class Pet {
         return "Pet{" +
                 "petID=" + petID +
                 ", species=" + species +
-                ", Name='" + Name + '\'' +
+                ", Name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", picture='" + picture + '\'' +
                 ", prices=" + prices +

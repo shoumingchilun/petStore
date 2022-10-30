@@ -2,6 +2,7 @@ package com.chilun.petStore.controller;
 
 import com.chilun.petStore.dao.SelectInfo;
 import com.chilun.petStore.pojo.Pet;
+import com.chilun.petStore.service.PetService;
 import com.chilun.petStore.view.Page;
 
 import javax.servlet.ServletException;
@@ -17,47 +18,62 @@ import java.math.BigDecimal;
  * @create 2022-10-30-16:45
  */
 public class selectPetsServlet extends HttpServlet {
+    PetService service = new PetService();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String pageNoStr = req.getParameter("pageNo");
         String minPriceStr = req.getParameter("minPrice");
         String maxPriceStr = req.getParameter("maxPrice");
         String speciesStr = req.getParameter("species");
+        Page<Pet> page = (Page<Pet>) req.getAttribute("page");
 
-        int pageNo = 1;
+        int showPageNo = 1;
         BigDecimal minPrice = new BigDecimal("0");
         BigDecimal maxPrice = new BigDecimal(Integer.MAX_VALUE);
         Integer species = null;
 
-
         try {
-            pageNo = Integer.parseInt(pageNoStr);
+            if (pageNoStr != null)
+                showPageNo = Integer.parseInt(pageNoStr);
         } catch (NumberFormatException e) {
         }
         try {
-            minPrice = new BigDecimal(minPriceStr);
+            if (minPriceStr != null)
+                minPrice = new BigDecimal(minPriceStr);
         } catch (NumberFormatException e) {
         }
         try {
-            maxPrice = new BigDecimal(maxPriceStr);
+            if (maxPriceStr != null)
+                maxPrice = new BigDecimal(maxPriceStr);
         } catch (NumberFormatException e) {
         }
-        SelectInfo info = new SelectInfo(pageNo,minPrice.floatValue(),maxPrice.floatValue());
-        if (species != null) {
-            species = Integer.parseInt(speciesStr);
-            info = new SelectInfo(pageNo,minPrice.floatValue(),maxPrice.floatValue(),species);
+
+        if (showPageNo < 1) showPageNo = 1;
+        if (page != null)
+            if (showPageNo > page.getNumOfPage() + 1) showPageNo = page.getNumOfPage() + 1;
+
+        SelectInfo info = new SelectInfo(showPageNo - 1, minPrice.floatValue(), maxPrice.floatValue());
+        if (speciesStr != null) {
+            System.out.println("进入物种筛选");
+            try {
+                species = Integer.parseInt(speciesStr);
+            } catch (NumberFormatException e) {
+            }
+            info = new SelectInfo(showPageNo - 1, minPrice.floatValue(), maxPrice.floatValue(), species);
         }
 
-//        Page<Pet> page = bookService.getPage(criteriaBook);
-//
-//        request.setAttribute("bookpage", page);
-//
-//        request.getRequestDispatcher("/WEB-INF/pages/books.jsp").forward(request, response);
+        page = service.getPage(info);
 
+        System.out.println(page);
+
+        req.setAttribute("page", page);
+
+        req.getRequestDispatcher("/WEB-INF/selectPet/selectPet.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+        this.doGet(req, resp);
     }
 }

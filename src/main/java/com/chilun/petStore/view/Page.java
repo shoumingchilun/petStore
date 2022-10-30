@@ -7,6 +7,7 @@ import java.util.List;
  * @create 2022-10-26-15:19
  * <p>
  * 本类用于封装翻页信息
+ * pageNo从0开始计数
  */
 public class Page<T> {
     //当前页
@@ -21,18 +22,33 @@ public class Page<T> {
     //记录总数
     private int numOfAllItem;
 
+    public void setPageNo(int pageNo) {
+        this.pageNo = pageNo;
+    }
+
     //有无下页、上页判断
     public boolean isHasNext() {
-        return getPageNo() < getNumOfPage();
+        return getPageNo()+1 < getNumOfPage();
     }
 
     public boolean isHasPrev() {
-        return getPageNo() > 1;
+        return getPageNo() > 0;
     }
 
     //获得上页、下页
     public int getPrevPageNo() {
         return isHasPrev() ? getPageNo() - 1 : getPageNo();
+    }
+
+    @Override
+    public String toString() {
+        return "Page{" +
+                "pageNo=" + pageNo +
+                ", numOfAllItem=" + numOfAllItem +
+                ",hasNext="+isHasNext()+
+                ",hasPrev="+isHasPrev()+
+                ",应该显示的页数="+(pageNo+1)+
+                '}';
     }
 
     public int getNextPageNo() {
@@ -48,6 +64,9 @@ public class Page<T> {
         return list;
     }
 
+    public Page() {
+    }
+
     public void setList(List<T> list) {
         this.list = list;
     }
@@ -61,8 +80,8 @@ public class Page<T> {
     }
 
     public int getPageNo() {
-        if (pageNo < 1) pageNo = 1;
-        else if (pageNo > getNumOfPage()) pageNo = getNumOfPage();
+        if (pageNo < 0) pageNo = 0;
+        else if (pageNo > getNumOfPage()-1) pageNo = getNumOfPage()-1;
         return pageNo;
     }
 
@@ -71,6 +90,6 @@ public class Page<T> {
     }
 
     public int getNumOfPage() {
-        return numOfAllItem / size + numOfAllItem % size != 0 ? 1 : 0;
+        return numOfAllItem / size + (numOfAllItem % size != 0 ? 1 : 0);
     }
 }
