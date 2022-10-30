@@ -25,7 +25,7 @@ public class MyMainServlet extends HttpServlet {
         if(user==null){
             req.getRequestDispatcher("/WEB-INF/mainJsp/NoUserMain.jsp").forward(req,resp);
         }else{
-            req.getRequestDispatcher("UserMain.jsp").forward(req,resp);
+            req.getRequestDispatcher("/WEB-INF/mainJsp/UserMain.jsp").forward(req,resp);
         }
     }
 
