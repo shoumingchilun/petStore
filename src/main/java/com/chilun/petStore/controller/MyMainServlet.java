@@ -1,10 +1,8 @@
 package com.chilun.petStore.controller;
 
 import com.chilun.petStore.pojo.User;
-import com.chilun.petStore.service.UserService;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
