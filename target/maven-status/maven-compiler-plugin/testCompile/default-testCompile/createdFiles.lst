@@ -1,0 +1,5 @@
+testPet\testPage.class
+testPet\testPetDAO.class
+testTransactions\testTransactionDAO.class
+testPet\testPetService.class
+testUser\testUserDAO.class

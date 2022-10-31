@@ -13,7 +13,10 @@ import com.chilun.petStore.view.PetPageFactory;
  */
 public class PetService {
     private PetDAO dao = new PetDAO();
-    ;
+
+    public PetDAO getDao() {
+        return dao;
+    }
 
     //根据选择条件获得对应的宠物页
     public Page<Pet> getPage(SelectInfo info) {
