@@ -25,7 +25,10 @@ public class selectPetsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String back = req.getParameter("back");
+
+        //1.判断是否是从具体宠物界面会来的
         if (back == null) {
+            //2.判断是否是从筛选条件进入的（只要是select而且没有back，就是筛选）
             String pageNoStr = req.getParameter("pageNo");
             String minPriceStr = req.getParameter("minPrice");
             String maxPriceStr = req.getParameter("maxPrice");
