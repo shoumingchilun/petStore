@@ -1,5 +1,6 @@
 package com.chilun.petStore.view;
 
+import com.chilun.petStore.dao.SearchAndSelectInfo;
 import com.chilun.petStore.dao.SelectInfo;
 import com.chilun.petStore.dao.specialDAO.PetDAO;
 import com.chilun.petStore.pojo.Pet;
@@ -19,6 +20,15 @@ public class PetPageFactory {
     public Page<Pet> createPageByInfo(SelectInfo info, PetDAO dao) {
         Page<Pet> page = new Page<Pet>();
         List<Pet> list = dao.getSelectPet(info);
+        page.setPageNo(info.getPageNo());
+        page.setList(list);
+        page.setNumOfAllItem((int) dao.getNumOfSelectPet(info));
+        return page;
+    }
+
+    public Page<Pet> createPageBySearchInfo(SearchAndSelectInfo info,PetDAO dao){
+        Page<Pet> page = new Page<Pet>();
+        List<Pet> list = dao.getSearchPet(info);
         page.setPageNo(info.getPageNo());
         page.setList(list);
         page.setNumOfAllItem((int) dao.getNumOfSelectPet(info));

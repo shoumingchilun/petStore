@@ -1,5 +1,6 @@
 package testPet;
 
+import com.chilun.petStore.dao.SearchAndSelectInfo;
 import com.chilun.petStore.dao.SelectInfo;
 import com.chilun.petStore.dao.specialDAO.PetDAO;
 import com.chilun.petStore.pojo.Pet;
@@ -55,5 +56,11 @@ public class testPetDAO {
     public void testNum(){
         SelectInfo info2 = new SelectInfo(1, 1000, 10000);
         System.out.println(petDAO.getNumOfSelectPet(info2));
+    }
+
+    @Test
+    public void testSearch(){
+        SearchAndSelectInfo info2 = new SearchAndSelectInfo(0, 0, 10000,1,"小");
+        petDAO.getSearchPet(info2).forEach(System.out::println);
     }
 }

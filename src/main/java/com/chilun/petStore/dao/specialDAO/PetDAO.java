@@ -1,6 +1,7 @@
 package com.chilun.petStore.dao.specialDAO;
 
 import com.chilun.petStore.dao.BaseDAO;
+import com.chilun.petStore.dao.SearchAndSelectInfo;
 import com.chilun.petStore.dao.SelectInfo;
 import com.chilun.petStore.pojo.Pet;
 import com.chilun.petStore.pojo.User;
@@ -34,15 +35,15 @@ public class PetDAO extends BaseDAO<Pet> {
         String sql = "select * from pets where ";
         if (info.getSpecies() != null) {
             sql += "species = ? && prices <= ? && prices >= ? LIMIT ? , 5";
-            return super.executeQuery(sql, info.getSpecies(), info.getMaxPrice(), info.getMinPrice(), info.getPageNo()*5);
+            return super.executeQuery(sql, info.getSpecies(), info.getMaxPrice(), info.getMinPrice(), info.getPageNo() * 5);
         } else {
             sql += "prices <= ? && prices >= ? LIMIT ? , 5";
-            return super.executeQuery(sql, info.getMaxPrice(), info.getMinPrice(), info.getPageNo()*5);
+            return super.executeQuery(sql, info.getMaxPrice(), info.getMinPrice(), info.getPageNo() * 5);
         }
     }
 
     //根据SelectInfo获得符合条件的宠物数量
-    public long getNumOfSelectPet(SelectInfo info){
+    public long getNumOfSelectPet(SelectInfo info) {
         String sql = "select count(*) from pets where ";
         if (info.getSpecies() != null) {
             sql += "species = ? && prices <= ? && prices >= ? ";
@@ -50,6 +51,30 @@ public class PetDAO extends BaseDAO<Pet> {
         } else {
             sql += "prices <= ? && prices >= ? ";
             return (long) super.executeComplexQuery(sql, info.getMaxPrice(), info.getMinPrice())[0];
+        }
+    }
+
+    //根据search的字符串获得名称相似的Pet的List
+    public List<Pet> getSearchPet(SearchAndSelectInfo info) {
+        String sql = "select * from pets where name like CONCAT('%',?,'%') and ";
+        if (info.getSpecies() != null) {
+            sql += "species = ? && prices <= ? && prices >= ? LIMIT ? , 5";
+            return super.executeQuery(sql, info.getSearchStr(), info.getSpecies(), info.getMaxPrice(), info.getMinPrice(), info.getPageNo() * 5);
+        } else {
+            sql += "prices <= ? && prices >= ? LIMIT ? , 5";
+            return super.executeQuery(sql, info.getSearchStr(), info.getMaxPrice(), info.getMinPrice(), info.getPageNo() * 5);
+        }
+    }
+
+    //根据searchInfo获得符合条件的宠物数量
+    public long getNumOfSelectPet(SearchAndSelectInfo info) {
+        String sql = "select count(*) from pets where name like CONCAT('%',?,'%') and ";
+        if (info.getSpecies() != null) {
+            sql += "species = ? && prices <= ? && prices >= ? ";
+            return (long) super.executeComplexQuery(sql, info.getSearchStr(), info.getSpecies(), info.getMaxPrice(), info.getMinPrice())[0];
+        } else {
+            sql += "prices <= ? && prices >= ? ";
+            return (long) super.executeComplexQuery(sql, info.getSearchStr(), info.getMaxPrice(), info.getMinPrice())[0];
         }
     }
 }

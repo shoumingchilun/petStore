@@ -1,5 +1,6 @@
 package testPet;
 
+import com.chilun.petStore.dao.SearchAndSelectInfo;
 import com.chilun.petStore.dao.SelectInfo;
 import com.chilun.petStore.pojo.Pet;
 import com.chilun.petStore.service.PetService;
@@ -15,7 +16,11 @@ public class testPage {
     @Test
     public void testPage(){
         Page<Pet> page = service.getPage(new SelectInfo(0, 0, 10000));
+        System.out.println(page);
         System.out.println(page.isHasNext());
         System.out.println(page.isHasPrev());
+
+        Page<Pet> page2 = service.getPageBySearch(new SearchAndSelectInfo(0, 0, 10000,"小狗"));
+        System.out.println(page2);
     }
 }
