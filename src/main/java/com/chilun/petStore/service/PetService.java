@@ -32,4 +32,8 @@ public class PetService {
         return page;
     }
 
+    //根据PetID获得对应的宠物类
+    public Pet getPetByID(long Pet){
+        return dao.getPetById(Pet);
+    }
 }
