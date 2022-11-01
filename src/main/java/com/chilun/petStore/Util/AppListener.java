@@ -19,24 +19,11 @@ public class AppListener implements ServletContextListener {
 //
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        System.out.println("start");
-        Logger log = Logger.getLogger("com.chilun.petStore");
-        log.setLevel(Level.INFO);
-
-        ConsoleHandler consoleHandler =new ConsoleHandler();
-        consoleHandler.setLevel(Level.ALL);
-        log.addHandler(consoleHandler);
-        log.info("Aaa");
-//        FileHandler fileHandler = null;
-//        try {
-//            fileHandler = new FileHandler("testlog.log");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        fileHandler.setLevel(Level.INFO);
-//        //fileHandler.setFormatter(new SimpleFormatter());
-//        log.addHandler(fileHandler);
-//        log.info("111");
+        try {
+            Logback.getlog().info("444");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         ServletContextListener.super.contextInitialized(sce);
     }
 
@@ -44,17 +31,5 @@ public class AppListener implements ServletContextListener {
     public void contextDestroyed(ServletContextEvent sce) {
         ServletContextListener.super.contextDestroyed(sce);
     }
-    @Test
-    public void methods() throws IOException {
-        System.out.println("start");
-        File loginfo=new File("com.chilun.petStore.logback");
-        Logger log = Logger.getLogger("com.chilun.petStore.logback");
 
-        FileHandler fileHandler = new FileHandler("testlog.log");
-        log.setLevel(Level.INFO);
-        ConsoleHandler consoleHandler =new ConsoleHandler();
-        consoleHandler.setLevel(Level.ALL);
-        log.addHandler(consoleHandler);
-        log.info("Aaa");
-    }
 }
