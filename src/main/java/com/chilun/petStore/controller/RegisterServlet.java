@@ -3,7 +3,7 @@ package com.chilun.petStore.controller;
 import com.chilun.petStore.dao.specialDAO.UserDAO;
 import com.chilun.petStore.pojo.User;
 import com.chilun.petStore.service.UserService;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

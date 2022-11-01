@@ -29,9 +29,21 @@
             加入购物车数量:
             <input type="text" size="1" name="NumOfBuy" value="1"/>
             <input type="hidden" size="1" name="petID" value="${pet.petID}">
-            <input type="submit" value="加入购物车"/>
+            <c:if test="${not sessionScope.user eq null}">
+                <input type="submit" value="加入购物车"/>
+            </c:if>
+            <br><br>
+            <c:if test="${sessionScope.user eq null}">
+                <a href="login">登录以加入购物车</a>
+            </c:if>
+
         </form>
-        <a href="select?pageNo=${page.pageNo+1}&back=true">继续购物</a>
+        <c:if test="${requestScope.from eq 'main'}">
+            <a href="/">返回主页</a>
+        </c:if>
+        <c:if test="${requestScope.from eq 'select'}">
+            <a href="select?pageNo=${page.pageNo+1}&back=true">继续购物</a>
+        </c:if>
     </div>
 </body>
 </html>

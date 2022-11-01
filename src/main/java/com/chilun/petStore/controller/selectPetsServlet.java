@@ -25,19 +25,28 @@ public class selectPetsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String back = req.getParameter("back");
+
+        //1.判断是否是从具体宠物界面会来的
         if (back == null) {
+            //2.判断是否是从筛选条件进入的（只要是select而且没有back，就是筛选）
+
+            //3.获得筛选条件
             String pageNoStr = req.getParameter("pageNo");
             String minPriceStr = req.getParameter("minPrice");
             String maxPriceStr = req.getParameter("maxPrice");
             String speciesStr = req.getParameter("species");
             String search = req.getParameter("search");
-            Page<Pet> page = (Page<Pet>) req.getSession().getAttribute("page");
+
+            //4.新建Page对象
+            Page<Pet> page = null;
+
 
             int showPageNo = 1;
             BigDecimal minPrice = new BigDecimal("0");
             BigDecimal maxPrice = new BigDecimal(Integer.MAX_VALUE);
             Integer species = null;
 
+            //转换
             try {
                 if (pageNoStr != null)
                     showPageNo = Integer.parseInt(pageNoStr);
@@ -55,9 +64,11 @@ public class selectPetsServlet extends HttpServlet {
             }
 
             if (showPageNo < 1) showPageNo = 1;
-            if (page != null)
+            if (page != null) {
                 if (showPageNo > page.getNumOfPage() + 1) showPageNo = page.getNumOfPage() + 1;
+            }
 
+            //5.获得具体的筛选信息类，并获得对应Page
             if (search == null) {
                 SelectInfo info = null;
                 if (speciesStr != null) {
@@ -85,9 +96,11 @@ public class selectPetsServlet extends HttpServlet {
                 }
                 page = service.getPageBySearch(info);
             }
+
+
             System.out.println(page);
             req.getSession().setAttribute("page", page);
-
+            //6.显示Page对应的页面
             req.getRequestDispatcher("/WEB-INF/selectPet/selectPet.jsp").forward(req, resp);
         } else {
             req.getRequestDispatcher("/WEB-INF/selectPet/selectPet.jsp").forward(req, resp);
