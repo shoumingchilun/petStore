@@ -3,6 +3,20 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <!--监听器-->
+    <!--  session监听器  -->
+    <listener>
+        <listener-class>com.chilun.petStore.Util.SessionListener</listener-class>
+    </listener>
+    <!--  请求监听器  -->
+    <listener>
+        <listener-class>com.chilun.petStore.Util.PerfStatListener</listener-class>
+    </listener>
+    <!--  容器监听器  -->
+    <listener>
+        <listener-class>com.chilun.petStore.Util.AppListener</listener-class>
+    </listener>
+
 
     <servlet>
         <servlet-name>mainServlet</servlet-name>
