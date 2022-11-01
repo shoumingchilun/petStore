@@ -32,6 +32,7 @@
             <c:if test="${not sessionScope.user eq null}">
                 <input type="submit" value="加入购物车"/>
             </c:if>
+            <br><br>
             <c:if test="${sessionScope.user eq null}">
                 <a href="login">登录以加入购物车</a>
             </c:if>
@@ -40,7 +41,6 @@
         <c:if test="${requestScope.from eq 'main'}">
             <a href="/">返回主页</a>
         </c:if>
-        <br><br>
         <c:if test="${requestScope.from eq 'select'}">
             <a href="select?pageNo=${page.pageNo+1}&back=true">继续购物</a>
         </c:if>
