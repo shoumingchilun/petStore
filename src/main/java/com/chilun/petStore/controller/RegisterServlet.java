@@ -27,29 +27,36 @@ public class RegisterServlet extends HttpServlet {
         String account = request.getParameter("account");
         String password = request.getParameter("password");
         String password_confirm=request.getParameter("password_Confirm");
+        String checkCode=request.getParameter("checkCode");
 
-        //判断账户是否已经存在
-        if(userService.isExist(account)){
+        //先判断验证码是否正确
+        if(request.getSession().getAttribute("code").equals(checkCode)){
+            //判断账户是否已经存在
+            if(userService.isExist(account)){
 
-            request.setAttribute("msg","该账户名已存在!");
-            request.getRequestDispatcher("Register.jsp").forward(request,response);
-        }else if(password.equals(password_confirm)){
-            //判断两次密码是否一致，如果一致，数据库增加用户
-            user=new User();
-            user.setAccount(account);
-            user.setPassword(password);
-            user.setName("p");
-            //name栏不能为空    构造方法   注销账号(UserDao)删除
-            userService.add(user);
+                request.setAttribute("msg","该账户名已存在!");
+                request.getRequestDispatcher("Register.jsp").forward(request,response);
+            }else if(password.equals(password_confirm)){
+                //判断两次密码是否一致，如果一致，数据库增加用户
+                user=new User();
+                user.setAccount(account);
+                user.setPassword(password);
+                user.setName("p");
+                //name栏不能为空    构造方法   注销账号(UserDao)删除
+                userService.add(user);
 
-            String msg="~欢迎小主加入宠物商店~";
-            request.setAttribute("msg",msg);
-            //request.getSession().setAttribute("account",account);
-            response.sendRedirect("login.jsp");
-        }else{
-            request.setAttribute("msg","密码不一致，请重新输入");
+                String msg="~欢迎"+account+"小主加入宠物商店~";
+                request.getSession().setAttribute("msg",msg);
+                response.sendRedirect("login.jsp");
+            }else{
+                request.setAttribute("msg","密码不一致，请重新输入");
+                request.getRequestDispatcher("Register.jsp").forward(request,response);
+            }
+        }else {
+            request.setAttribute("msg","验证码错误");
             request.getRequestDispatcher("Register.jsp").forward(request,response);
         }
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
