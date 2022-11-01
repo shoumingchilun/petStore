@@ -12,7 +12,6 @@
     <title>Register</title>
     <link rel="stylesheet" type="text/css" href="Login/login.css"/>
 
-
 </head>
 <body>
 <form action="register" method="post">
@@ -20,8 +19,12 @@
         <h1>Register</h1>
 
         <div class="input-box">
-          <label><span style="color: gainsboro">account:</span></label>
+            <label><span style="color: gainsboro">account:</span></label>
             <span><input type="text" placeholder="Account" name="account"></span>
+            <%
+                //想实现注册完登录栏默认有account
+                String account=(String)request.getSession().getAttribute("account");
+            %>
         </div>
 
        <div class="input-box">
@@ -36,6 +39,15 @@
 
         <div>
             <input type="submit" value="Sign up" class="submit">
+        </div>
+
+        <div class="input-box">
+            <%
+                String msg=(String)request.getAttribute("msg");
+                if(msg!=null){
+                    out.print("<font color='darkorange'>"+msg+"</font>");
+                }
+            %>
         </div>
 
     </div>

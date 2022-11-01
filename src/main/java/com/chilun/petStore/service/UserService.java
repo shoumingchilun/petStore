@@ -13,28 +13,23 @@ import java.sql.SQLException;
  */
 public class UserService {
 
-    private UserDAO userDAO;
+    private UserDAO userDAO=new UserDAO();
     Connection connection;
 
     public boolean login(String account, String password) {
-
 
         try{
             //获取数据库连接
             connection= ConnUtil.getConn();
             //查询账号和密码
-            userDAO=new UserDAO();
             User user= userDAO.getUserByAcc(account);
             if(user!=null){
                 if(user.getPassword().equals(password)){  //不能用 ==来判断
                     return true;
                 }else{
-                    //servlet业务：提示密码错误   待完善
-
                     return false;
                 }
             }else{
-                //servlet业务：提示账户名错误     待完善
                 return false;
             }
 
@@ -52,4 +47,38 @@ public class UserService {
 
     }
 
+    public boolean isExist(String account){
+        try{
+            //获取数据库连接
+            connection= ConnUtil.getConn();
+            //查询账号和密码
+            User user= userDAO.getUserByAcc(account);
+            if(user==null){
+                return false;
+            }
+                return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return true;
+        }
+        finally {
+            try {
+                ConnUtil.closeConn();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public void add(User user) {
+        try {
+            //获取数据库连接
+            connection= ConnUtil.getConn();
+            //数据库增加用户
+
+            userDAO.addUser(user);
+        }catch (Exception e){
+
+        }
+    }
 }
