@@ -3,7 +3,6 @@ package com.chilun.petStore.service;
 import com.chilun.petStore.dao.ConnUtil;
 import com.chilun.petStore.dao.specialDAO.UserDAO;
 import com.chilun.petStore.pojo.User;
-import org.junit.Test;
 
 import java.sql.Connection;
 import java.sql.SQLException;
