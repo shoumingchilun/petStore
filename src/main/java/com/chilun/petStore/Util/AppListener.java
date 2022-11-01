@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.*;
 
@@ -44,9 +45,12 @@ public class AppListener implements ServletContextListener {
         ServletContextListener.super.contextDestroyed(sce);
     }
     @Test
-    public void methods(){
+    public void methods() throws IOException {
         System.out.println("start");
+        File loginfo=new File("com.chilun.petStore.logback");
         Logger log = Logger.getLogger("com.chilun.petStore.logback");
+
+        FileHandler fileHandler = new FileHandler("testlog.log");
         log.setLevel(Level.INFO);
         ConsoleHandler consoleHandler =new ConsoleHandler();
         consoleHandler.setLevel(Level.ALL);
