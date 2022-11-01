@@ -147,7 +147,7 @@
                     </c:if>
                     <br><br>
                     <c:if test="${sessionScope.user eq null}">
-                        <a href="login">登录以加入购物车</a>
+                        <a href="login"class="returnMain">登录以加入购物车</a>
                     </c:if>
                 </form>
             </div>
