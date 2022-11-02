@@ -14,18 +14,23 @@ import java.util.logging.Logger;
  */
 public class Logback {
 
-    private Logger log = null;
+    private volatile static Logger log = null;
 
-    public Logger getlog() throws IOException {
+    public static Logger getlog() throws IOException {
         if (log == null) {
-            Logger log = Logger.getLogger("com.chilun.petStore.logback");
-            log.setLevel(Level.INFO);
-            ConsoleHandler consoleHandler = new ConsoleHandler();
-            log.addHandler(consoleHandler);
-            FileHandler fileHandler = new FileHandler("testlog.log",true);
-            fileHandler.setFormatter(new LoggerFormatter());
-            log.addHandler(fileHandler);
-            return log;
-        } else return log;
+            synchronized (Logback.class) {
+                if (log == null) {
+                    Logger log = Logger.getLogger("com.chilun.petStore.logback");
+                    log.setLevel(Level.INFO);
+                    ConsoleHandler consoleHandler = new ConsoleHandler();
+                    log.addHandler(consoleHandler);
+                    FileHandler fileHandler = new FileHandler("testlog.log", true);
+                    fileHandler.setFormatter(new LoggerFormatter());
+                    log.addHandler(fileHandler);
+                    return log;
+                }
+            }
+        }
+        return log;
     }
 }

@@ -38,7 +38,7 @@ public class SessionListener implements HttpSessionListener, ServletContextListe
         ServletContext servletContext=httpSession.getServletContext();
         AtomicInteger userCouter=(AtomicInteger)servletContext.getAttribute("userCouter");
         try {
-            new Logback().getlog().log(Level.INFO,"userCouter incremented to"+userCouter);
+            Logback.getlog().log(Level.INFO,"userCouter incremented to"+userCouter);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -51,7 +51,7 @@ public class SessionListener implements HttpSessionListener, ServletContextListe
         ServletContext servletContext=httpSession.getServletContext();
         AtomicInteger userCouter=(AtomicInteger)servletContext.getAttribute("userCouter");
         try {
-            new Logback().getlog().log(Level.INFO,"userCouter decremented to"+userCouter);
+            Logback.getlog().log(Level.INFO,"userCouter decremented to"+userCouter);
         } catch (IOException e) {
             e.printStackTrace();
         }

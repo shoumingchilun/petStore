@@ -16,20 +16,22 @@ import java.util.logging.Level;
 public class PerfStatListener implements ServletRequestListener {
     @Override
     public void requestDestroyed(ServletRequestEvent sre) {
+        ServletRequestListener.super.requestDestroyed(sre);
         ServletRequest servletRequest = sre.getServletRequest();
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         try {
-            new Logback().getlog().log(Level.INFO, "time taken to excute " + httpServletRequest.getRequestURI() + ":" + (System.nanoTime() - (Long) servletRequest.getAttribute("start")) + "microseconds");
+            Logback.getlog().log(Level.INFO, "time taken to excute " + httpServletRequest.getRequestURI() + ":" + (System.nanoTime() - (Long) servletRequest.getAttribute("start")) + "microseconds");
         } catch (IOException e) {
             e.printStackTrace();
         }
-        ServletRequestListener.super.requestDestroyed(sre);
+
     }
 
     @Override
     public void requestInitialized(ServletRequestEvent sre) {
+        ServletRequestListener.super.requestInitialized(sre);
         ServletRequest servletRequest = sre.getServletRequest();
         servletRequest.setAttribute("start", System.nanoTime());
-        ServletRequestListener.super.requestInitialized(sre);
+
     }
 }

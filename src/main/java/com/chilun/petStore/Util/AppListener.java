@@ -20,7 +20,7 @@ public class AppListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         ServletContextListener.super.contextInitialized(sce);
         try {
-            new Logback().getlog().log(Level.INFO,"context has Initialized");
+            new Logback().getlog().log(Level.INFO, "context has Initialized");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -30,11 +30,19 @@ public class AppListener implements ServletContextListener {
     public void contextDestroyed(ServletContextEvent sce) {
         ServletContextListener.super.contextDestroyed(sce);
         try {
-            new Logback().getlog().log(Level.INFO,"context has Destroyed");
+            Logback.getlog().log(Level.INFO, "context has Destroyed");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    @Test
+    public void i() {
+        try {
+            Logback.getlog().log(Level.INFO, "context has Destroyed");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
