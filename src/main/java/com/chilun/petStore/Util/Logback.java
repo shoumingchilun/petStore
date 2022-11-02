@@ -22,7 +22,7 @@ public class Logback {
             log.setLevel(Level.INFO);
             ConsoleHandler consoleHandler = new ConsoleHandler();
             log.addHandler(consoleHandler);
-            FileHandler fileHandler = new FileHandler("testlog.log");
+            FileHandler fileHandler = new FileHandler("testlog.log",true);
             fileHandler.setFormatter(new LoggerFormatter());
             log.addHandler(fileHandler);
             return log;

@@ -1,7 +1,11 @@
 package com.chilun.petStore.Util;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.util.logging.Level;
 
 /**
  * @Title:
@@ -12,11 +16,20 @@ import javax.servlet.ServletRequestListener;
 public class PerfStatListener implements ServletRequestListener {
     @Override
     public void requestDestroyed(ServletRequestEvent sre) {
+        ServletRequest servletRequest = sre.getServletRequest();
+        HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
+        try {
+            new Logback().getlog().log(Level.INFO, "time taken to excute " + httpServletRequest.getRequestURI() + ":" + (System.nanoTime() - (Long) servletRequest.getAttribute("start")) + "microseconds");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         ServletRequestListener.super.requestDestroyed(sre);
     }
 
     @Override
     public void requestInitialized(ServletRequestEvent sre) {
+        ServletRequest servletRequest = sre.getServletRequest();
+        servletRequest.setAttribute("start", System.nanoTime());
         ServletRequestListener.super.requestInitialized(sre);
     }
 }

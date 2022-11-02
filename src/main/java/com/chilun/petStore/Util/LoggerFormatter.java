@@ -5,9 +5,11 @@ import java.util.Date;
 import java.util.logging.*;
 
 /**
- * Created by N3verL4nd on 2017/4/24.
+ * @Title:
+ * @Description:
+ * @author: anthor
+ * @date:2022/11/120:57
  */
-
 class LoggerFormatter extends Formatter {
 
     @Override
