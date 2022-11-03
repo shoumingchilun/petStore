@@ -3,6 +3,7 @@ package com.chilun.petStore.service;
 import com.chilun.petStore.dao.ConnUtil;
 import com.chilun.petStore.dao.specialDAO.UserDAO;
 import com.chilun.petStore.pojo.User;
+import org.junit.Test;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -16,7 +17,10 @@ public class UserService {
     private UserDAO userDAO=new UserDAO();
     Connection connection;
 
-
+@Test
+public void test(){
+    System.out.println(login("chilun","123"));
+}
     public boolean login(String account, String password) {
 
         try{

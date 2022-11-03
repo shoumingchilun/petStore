@@ -3,7 +3,7 @@ package com.chilun.petStore.controller;
 import com.chilun.petStore.dao.specialDAO.UserDAO;
 import com.chilun.petStore.pojo.User;
 import com.chilun.petStore.service.UserService;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -58,6 +58,7 @@ public class RegisterServlet extends HttpServlet {
         }
 
     }
+
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);
