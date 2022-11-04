@@ -3,14 +3,13 @@ package com.chilun.petStore.controller;
 
 import com.chilun.petStore.pojo.User;
 import com.chilun.petStore.service.UserService;
-import com.mysql.cj.xdevapi.Session;
+import org.junit.Test;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
@@ -24,6 +23,11 @@ public class LoginServlet extends HttpServlet {
     private String account;
     private String password;
     private String checkCode;
+
+    @Test
+    public void test(){
+        System.out.println(userService.login("chilun","123"));
+    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         account=request.getParameter("account");
@@ -38,14 +42,14 @@ public class LoginServlet extends HttpServlet {
             if(userService.login(account,password)){
                 User user=new User(account,password,"p");
                 request.getSession().setAttribute("user",user);
-                response.sendRedirect("MainInterface.jsp");
+                response.sendRedirect("/");
             }else{
                 request.setAttribute("msg","账号或密码不正确");
-                request.getRequestDispatcher("login.jsp").forward(request,response);
+                request.getRequestDispatcher("/login.jsp").forward(request,response);
             }
         } else{
             request.setAttribute("msg","验证码错误");
-            request.getRequestDispatcher("login.jsp").forward(request,response);
+            request.getRequestDispatcher("/login.jsp").forward(request,response);
         }
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

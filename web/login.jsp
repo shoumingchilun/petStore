@@ -12,7 +12,13 @@
     <title>Sign in</title>
     <link rel="stylesheet" type="text/css" href="Login/login.css"/>
     <link rel="stylesheet" type="text/css" href="font/iconfont.css"/>
-    <script src="jquery/jquery-3.6.1.min.js"></script>
+    <script src="js/jquery/jquery-3.6.1.min.js"></script>
+
+    <script>
+        function onfocus(){
+            alert("1密码不为空");
+        }
+    </script>
 
 </head>
 
@@ -28,7 +34,7 @@
         </div>
         <div class="input-box">
             <i class="iconfont">&#xe676;</i>      <!--字体图标-->
-            <input type="password" placeholder="Password" name="password"/>
+            <input type="password" placeholder="Password" onfocus="onfocus()" name="password" id="psw"/>
         </div>
 
         <div>

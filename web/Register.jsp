@@ -11,7 +11,7 @@
     <meta charset="utf-8" />
     <title>Register</title>
     <link rel="stylesheet" type="text/css" href="Login/login.css"/>
-    <script src="jquery/jquery-3.6.1.min.js"></script>
+    <script src="js/jquery/jquery-3.6.1.min.js"></script>
 
 </head>
 <body>
