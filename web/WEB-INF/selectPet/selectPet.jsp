@@ -58,7 +58,7 @@
 <center>
         <form action="select" method="post">
             Price:
-            <input type="text" size="1" name="minPrice"/> -
+            <input type="text" size="1" name="minPrice"/>
             <input type="text" size="1" name="maxPrice"/>
             species:
             <input type="text" size="1" name="species"/>

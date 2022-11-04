@@ -1,16 +1,15 @@
 <%--
   Created by IntelliJ IDEA.
   User: pi
-  Date: 2022/10/31
-  Time: 10:04
+  Date: 2022/11/3
+  Time: 22:12
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page import="java.io.PrintWriter" %>
+<%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>petStore</title>
-</head>
-<body>
-主界面
-</body>
-</html>
+
+<%
+  //跳转主界面
+  response.sendRedirect("main");
+%>

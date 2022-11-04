@@ -42,6 +42,17 @@ public class PetDAO extends BaseDAO<Pet> {
         }
     }
 
+    //根据selecctInfo获得宠物，无page信息
+    public List<Pet> getSelectPetWithoutPage(SelectInfo info) {
+        String sql = "select * from pets where ";
+        if (info.getSpecies() != null) {
+            sql += "species = ? && prices <= ? && prices >= ?";
+            return super.executeQuery(sql, info.getSpecies(), info.getMaxPrice(), info.getMinPrice());
+        } else {
+            sql += "prices <= ? && prices >= ?";
+            return super.executeQuery(sql, info.getMaxPrice(), info.getMinPrice());
+        }
+    }
     //根据SelectInfo获得符合条件的宠物数量
     public long getNumOfSelectPet(SelectInfo info) {
         String sql = "select count(*) from pets where ";
