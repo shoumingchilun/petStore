@@ -85,7 +85,9 @@
         }
 
         .description2 {
-
+            text-align:left;
+            width:65%;
+            margin:0 auto;
         }
 
         .inputSubmit{
