@@ -47,13 +47,14 @@
         margin-right: 40px;
         display: inline-block;
     }
+
 </style>
 
 <body>
-<div align="center">
 
+<div align="center">
     <!-- 【导航栏】 -->
-    <div align="center" style="margin-top: 20px;">
+    <div  style="margin-top: 20px;">
         <span class="head">
             <span style="margin-left: 10px" class="glyphicon glyphicon-th-list"></span>
             <span style="margin-left: 10px">宠物分类</span>

@@ -12,6 +12,11 @@
     <link rel="stylesheet" type="text/css" href="Login/login.css"/>
     <link rel="stylesheet" type="text/css" href="font/iconfont.css"/>
     <script src="js/jquery/jquery-3.6.1.min.js"></script>
+
+  <%-- 网站图标   --%>
+  <title>petStore</title>
+  <link rel="shortcut icon" href="img/petStore2.png" type="image/x-icon">
+
 </head>
 <body>
 <form action="ForgetPsw" method="post">

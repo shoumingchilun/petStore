@@ -1,9 +1,0 @@
-#忽视上传到git的文件
-.idea
-
-out
-
-target
-
-petStore.iml
-
