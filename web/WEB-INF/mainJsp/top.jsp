@@ -18,9 +18,11 @@
 
     <span>喵，欢迎来到petStore</span>
 
-    <c:if test="${!empty user}">
-        <a href="login.jsp">${user.name}</a>
-        <a href="forelogout">退出</a>
+
+    <c:if test="${not empty user}">
+<%--        user ne empty--%>
+        <a href="info.jsp">${user.account}</a>
+        <a href="main">退出</a>
 
 <%--        <%--%>
 <%--            // 设置购物车总数--%>

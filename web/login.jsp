@@ -14,6 +14,11 @@
     <link rel="stylesheet" type="text/css" href="font/iconfont.css"/>
     <script src="js/jquery/jquery-3.6.1.min.js"></script>
 
+    <%-- 网站图标   --%>
+    <title>petStore</title>
+    <link rel="shortcut icon" href="img/petStore2.png" type="image/x-icon">
+
+
     <script>
         function onfocus(){
             alert("1密码不为空");
@@ -28,13 +33,16 @@
     <div id="login-box">
         <h1>Login</h1>
         <div class="input-box">
-            <i class="iconfont">&#xe682;</i>    <!--字体图标-->
-
-            <input type="text" placeholder="Account" name="account"/>
+            <label>
+                <i class="iconfont">&#xe682;</i>    <!--字体图标-->
+                <input type="text" placeholder="Account" name="account"/>
+            </label>
         </div>
         <div class="input-box">
+            <label>
             <i class="iconfont">&#xe676;</i>      <!--字体图标-->
-            <input type="password" placeholder="Password" onfocus="onfocus()" name="password" id="psw"/>
+                <input type="password" placeholder="Password" onfocus="onfocus()" name="password" id="psw"/>
+            </label>
         </div>
 
         <div>
@@ -65,7 +73,6 @@
 
         <div class="input-box">
             <%
-
                 String msg=(String)request.getAttribute("msg");
                 if(msg==null) {
                     msg = (String) request.getSession().getAttribute("msg");
