@@ -34,7 +34,7 @@
         <c:if test="${ not empty sessionScope.user}">
             <div style="text-align: center;position:relative;margin-top: 10px"class="font" >
                    welcome
-                <span style="position:absolute; margin-left: 20px ;font-family: 华文行楷" >
+                <span style="position:absolute; margin-left: 20px ;font-family: 华文隶书 " >
                     ${sessionScope.user.account}!
                 </span>
 

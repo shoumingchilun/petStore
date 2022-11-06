@@ -1,6 +1,8 @@
 <%@ page import="com.chilun.petStore.dao.specialDAO.PetDAO" %>
 <%@ page import="com.chilun.petStore.dao.SelectInfo" %>
-<%@ page import="com.chilun.petStore.pojo.Pet" %><%--
+<%@ page import="com.chilun.petStore.pojo.Pet" %>
+<%@ page import="com.chilun.petStore.service.PetService" %>
+<%@ page import="org.junit.Test" %><%--
   Created by IntelliJ IDEA.
   User: pi
   Date: 2022/11/4
@@ -80,9 +82,13 @@
     </div>
 
     <%
-        PetDAO petDAO=new PetDAO();
-        List<Pet> petList=petDAO.getSelectPetWithoutPage(new SelectInfo(0,10,1000));
-        request.setAttribute("petList",petList);
+        PetService petService=new PetService();
+        //将各个物种保存在petList0、1、2、3...
+        for(int i=0;i<5;i++){
+            List<Pet> petList=petService.getAllPet(i);
+            request.setAttribute("petList"+i,petList);
+        }
+
     %>
 
     <!-- 【自定义  列表】 -->
@@ -91,268 +97,396 @@
         <!-- 第1行  -->
         <div style="display: table; border-spacing: 30px;">
 
-            <!-- pet1 -->
-            <div
-                    style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
+            <!-- pet1-1 -->
+            <div style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
                 <!-- 图片 -->
-                <a href="pet?from=main">
-                    <c:if test="${petList[0].picture ne '无'}">
+                <a href="pet?petID=${petList0[0].petID}&from=main">
+                    <c:if test="${petList0[0].amount ne 0}">
                         <img  style="width: 200px; height: 200px"
-                              src="picture/animal/${petList[0].picture}"
-<%--                       src="${pageContext.request.scheme }://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath}/picture/animal/${pet.picture}"--%>
+                              src="${petList0[0].picture}"
+                              title="pet1-1" alt="图片缺失" class="picture"/>
+                    </c:if>
+
+                    <c:if test="${petList0[0].amount eq 0}">
+                        <img  style="width: 200px; height: 200px"
+                              src=“/”
                               title="pet1-1" alt="宠物暂时空缺" class="picture"/>
                     </c:if>
-<%--                <img style="width: 200px; height: 200px"--%>
-<%--                     src="picture/animal/cat1.jpeg" title="pet1-1" alt="pet1-1">--%>
+
                 </a>
                 <div
                         style="width: 100%; height: 100px; background-color: #F6F6F6; text-align: center;">
                     <!-- pet名称 -->
                     <div style="height: 5px;"></div>
                     <div>
-                        <label style="font-size: 20px">宠物名称</label>
+                        <label style="font-size: 20px">${petList0[0].name}</label>
                     </div>
                     <!-- 价格 -->
                     <div style="margin-top: 1px">
-                        <label style="color: #696969">10元</label>
+                        <label style="color: #696969">${petList0[0].prices}元</label>
                     </div>
                     <!-- 购买 -->
+<%--                    <div style="margin-top: 1px">--%>
+<%--                        <input type="button" value="+" class="fileinput-button">--%>
+<%--                    </div>--%>
+
                     <div style="margin-top: 1px">
-                        <input type="button" value="+" class="fileinput-button">
+                        <span class="fileinput-button" style="font-size: small;font-family: 宋体">
+                            库存仅剩余:<span style="font-style: italic;color: aqua">${petList0[0].amount} </span>件
+                        </span>
                     </div>
+
                 </div>
             </div>
 
-            <!-- pet2 -->
-            <div
-                    style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
+            <!-- pet1-2 -->
+            <div style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
                 <!-- 图片 -->
-                <img style="width: 200px; height: 200px"
-                     src="img/carousel/pet2.jpg">
+                <a href="pet?petID=${petList1[0].petID}&from=main">
+                    <c:if test="${petList1[0].amount ne 0}">
+                        <img  style="width: 200px; height: 200px"
+                              src="${petList1[0].picture}"
+                              title="pet1-2" alt="图片缺失" class="picture"/>
+                    </c:if>
+
+                    <c:if test="${petList1[0].amount eq 0}">
+                        <img  style="width: 200px; height: 200px"
+                              src=“/”
+                              title="pet1-2" alt="宠物暂时空缺" class="picture"/>
+                    </c:if>
+
+                </a>
                 <div
                         style="width: 100%; height: 100px; background-color: #F6F6F6; text-align: center;">
                     <!-- pet名称 -->
                     <div style="height: 5px;"></div>
                     <div>
-                        <label style="font-size: 20px">宠物名称</label>
+                        <label style="font-size: 20px">${petList1[0].name}</label>
                     </div>
                     <!-- 价格 -->
                     <div style="margin-top: 1px">
-                        <label style="color: #696969">10元</label>
+                        <label style="color: #696969">${petList1[0].prices}元</label>
                     </div>
-                    <!-- 购买 -->
+
                     <div style="margin-top: 1px">
-                        <input type="button" value="+" class="fileinput-button">
+                        <span class="fileinput-button" style="font-size: small;font-family: 宋体">
+                            库存仅剩余:<span style="font-style: italic;color: aqua">${petList1[0].amount} </span>件
+                        </span>
                     </div>
                 </div>
             </div>
 
-            <!-- 商品1 -->
-            <div
-                    style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
+
+            <!-- pet1-3 -->
+            <div style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
                 <!-- 图片 -->
-                <img style="width: 200px; height: 200px"
-                     src="img/carousel/pet1.jpg">
+                <a href="pet?petID=${petList2[0].petID}&from=main">
+                    <c:if test="${petList2[0].amount ne 0}">
+                        <img  style="width: 200px; height: 200px"
+                              src="${petList2[0].picture}"
+                              title="pet1-3" alt="图片缺失" class="picture"/>
+                    </c:if>
+
+                    <c:if test="${petList2[0].amount eq 0}">
+                        <img  style="width: 200px; height: 200px"
+                              src=“/”
+                              title="pet1-3" alt="宠物暂时空缺" class="picture"/>
+                    </c:if>
+
+                </a>
                 <div
                         style="width: 100%; height: 100px; background-color: #F6F6F6; text-align: center;">
-                    <!-- 菜品名称 -->
+                    <!-- pet名称 -->
                     <div style="height: 5px;"></div>
                     <div>
-                        <label style="font-size: 20px">宠物名称</label>
+                        <label style="font-size: 20px">${petList2[0].name}</label>
                     </div>
                     <!-- 价格 -->
                     <div style="margin-top: 1px">
-                        <label style="color: #696969">10元</label>
+                        <label style="color: #696969">${petList2[0].prices}元</label>
                     </div>
-                    <!-- 购买 -->
                     <div style="margin-top: 1px">
-                        <input type="button" value="+" class="fileinput-button">
+                        <span class="fileinput-button" style="font-size: small;font-family: 宋体">
+                            库存仅剩余:<span style="font-style: italic;color: aqua">${petList2[0].amount} </span>件
+                        </span>
                     </div>
                 </div>
             </div>
 
-            <!-- 商品1 -->
-            <div
-                    style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
+
+            <!-- pet1-4 -->
+            <div style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
                 <!-- 图片 -->
-                <img style="width: 200px; height: 200px"
-                     src="http://localhost/Web_meiTuan/img/p1.png">
+                <a href="pet?petID=${petList3[0].petID}&from=main">
+                    <c:if test="${petList3[0].amount ne 0}">
+                        <img  style="width: 200px; height: 200px"
+                              src="${petList3[0].picture}"
+                              title="pet1-4" alt="图片缺失" class="picture"/>
+                    </c:if>
+
+                    <c:if test="${petList3[0].amount eq 0}">
+                        <img  style="width: 200px; height: 200px"
+                              src=“/”
+                              title="pet1-4" alt="宠物暂时空缺" class="picture"/>
+                    </c:if>
+
+                </a>
                 <div
                         style="width: 100%; height: 100px; background-color: #F6F6F6; text-align: center;">
-                    <!-- 菜品名称 -->
+                    <!-- pet名称 -->
                     <div style="height: 5px;"></div>
                     <div>
-                        <label style="font-size: 20px">宠物名称</label>
+                        <label style="font-size: 20px">${petList3[0].name}</label>
                     </div>
                     <!-- 价格 -->
                     <div style="margin-top: 1px">
-                        <label style="color: #696969">10元</label>
+                        <label style="color: #696969">${petList3[0].prices}元</label>
                     </div>
-                    <!-- 购买 -->
                     <div style="margin-top: 1px">
-                        <input type="button" value="+" class="fileinput-button">
+                        <span class="fileinput-button" style="font-size: small;font-family: 宋体">
+                            库存仅剩余:<span style="font-style: italic;color: aqua">${petList3[0].amount} </span>件
+                        </span>
                     </div>
                 </div>
             </div>
 
-            <!-- 商品1 -->
-            <div
-                    style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
+            <!-- pet1-5 -->
+            <div style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
                 <!-- 图片 -->
-                <img style="width: 200px; height: 200px"
-                     src="http://localhost/Web_meiTuan/img/p1.png">
+                <a href="pet?petID=${petList4[0].petID}&from=main">
+                    <c:if test="${petList4[0].amount ne 0}">
+                        <img  style="width: 200px; height: 200px"
+                              src="${petList4[0].picture}"
+                              title="pet1-5" alt="图片缺失" class="picture"/>
+                    </c:if>
+
+                    <c:if test="${petList4[0].amount eq 0}">
+                        <img  style="width: 200px; height: 200px"
+                              src=“/”
+                              title="pet1-5" alt="宠物暂时空缺" class="picture"/>
+                    </c:if>
+
+                </a>
                 <div
                         style="width: 100%; height: 100px; background-color: #F6F6F6; text-align: center;">
-                    <!-- 菜品名称 -->
+                    <!-- pet名称 -->
                     <div style="height: 5px;"></div>
                     <div>
-                        <label style="font-size: 20px">宠物名称</label>
+                        <label style="font-size: 20px">${petList4[0].name}</label>
                     </div>
                     <!-- 价格 -->
                     <div style="margin-top: 1px">
-                        <label style="color: #696969">10元</label>
+                        <label style="color: #696969">${petList4[0].prices}元</label>
                     </div>
-                    <!-- 购买 -->
                     <div style="margin-top: 1px">
-                        <input type="button" value="+" class="fileinput-button">
+                        <span class="fileinput-button" style="font-size: small;font-family: 宋体">
+                            库存仅剩余:<span style="font-style: italic;color: aqua">${petList4[0].amount} </span>件
+                        </span>
                     </div>
                 </div>
             </div>
 
         </div>
 
-        <!-- 第2行 商品 -->
+        <!-- 第2行  -->
         <div style="display: table; border-spacing: 30px;">
 
-            <!-- 商品1 -->
-            <div
-                    style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
+            <!-- pet2-1 -->
+            <div style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
                 <!-- 图片 -->
-                <img style="width: 200px; height: 200px"
-                     src="http://localhost/Web_meiTuan/img/p1.png">
+                <a href="pet?petID=${petList0[1].petID}&from=main">
+                    <c:if test="${petList0[1].amount ne 0}">
+                        <img  style="width: 200px; height: 200px"
+                              src="${petList0[1].picture}"
+                              title="pet2-1" alt="图片缺失" class="picture"/>
+                    </c:if>
+
+                    <c:if test="${petList0[1].amount eq 0}">
+                        <img  style="width: 200px; height: 200px"
+                              src=“/”
+                              title="pet2-1" alt="宠物暂时空缺" class="picture"/>
+                    </c:if>
+
+                </a>
                 <div
                         style="width: 100%; height: 100px; background-color: #F6F6F6; text-align: center;">
-                    <!-- 菜品名称 -->
+                    <!-- pet名称 -->
                     <div style="height: 5px;"></div>
                     <div>
-                        <label style="font-size: 20px">宠物名称</label>
+                        <label style="font-size: 20px">${petList0[1].name}</label>
                     </div>
                     <!-- 价格 -->
                     <div style="margin-top: 1px">
-                        <label style="color: #696969">10元</label>
+                        <label style="color: #696969">${petList0[1].prices}元</label>
                     </div>
-                    <!-- 购买 -->
                     <div style="margin-top: 1px">
-                        <input type="button" value="+" class="fileinput-button">
+                        <span class="fileinput-button" style="font-size: small;font-family: 宋体">
+                            库存仅剩余:<span style="font-style: italic;color: aqua">${petList0[1].amount} </span>件
+                        </span>
                     </div>
                 </div>
             </div>
 
-            <!-- 商品1 -->
-            <div
-                    style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
+            <!-- pet2-2 -->
+            <div style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
                 <!-- 图片 -->
-                <img style="width: 200px; height: 200px"
-                     src="http://localhost/Web_meiTuan/img/p1.png">
+                <a href="pet?petID=${petList1[1].petID}&from=main">
+                    <c:if test="${petList1[1].amount ne 0}">
+                        <img  style="width: 200px; height: 200px"
+                              src="${petList1[1].picture}"
+                              title="pet2-2" alt="图片缺失" class="picture"/>
+                    </c:if>
+
+                    <c:if test="${petList1[0].amount eq 0}">
+                        <img  style="width: 200px; height: 200px"
+                              src=“/”
+                              title="pet2-2" alt="宠物暂时空缺" class="picture"/>
+                    </c:if>
+
+                </a>
                 <div
                         style="width: 100%; height: 100px; background-color: #F6F6F6; text-align: center;">
-                    <!-- 菜品名称 -->
+                    <!-- pet名称 -->
                     <div style="height: 5px;"></div>
                     <div>
-                        <label style="font-size: 20px">宠物名称</label>
+                        <label style="font-size: 20px">${petList1[1].name}</label>
                     </div>
                     <!-- 价格 -->
                     <div style="margin-top: 1px">
-                        <label style="color: #696969">10元</label>
+                        <label style="color: #696969">${petList1[1].prices}元</label>
                     </div>
-                    <!-- 购买 -->
                     <div style="margin-top: 1px">
-                        <input type="button" value="+" class="fileinput-button">
+                        <span class="fileinput-button" style="font-size: small;font-family: 宋体">
+                            库存仅剩余:<span style="font-style: italic;color: aqua">${petList1[1].amount} </span>件
+                        </span>
                     </div>
                 </div>
             </div>
 
-            <!-- 商品1 -->
-            <div
-                    style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
+
+            <!-- pet2-3 -->
+            <div style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
                 <!-- 图片 -->
-                <img style="width: 200px; height: 200px"
-                     src="http://localhost/Web_meiTuan/img/p1.png">
+                <a href="pet?petID=${petList2[1].petID}&from=main">
+                    <c:if test="${petList2[1].amount ne 0}">
+                        <img  style="width: 200px; height: 200px"
+                              src="${petList2[1].picture}"
+                              title="pet2-3" alt="图片缺失" class="picture"/>
+                    </c:if>
+
+                    <c:if test="${petList2[1].amount eq 0}">
+                        <img  style="width: 200px; height: 200px"
+                              src=“/”
+                              title="pet2-3" alt="宠物暂时空缺" class="picture"/>
+                    </c:if>
+
+                </a>
                 <div
                         style="width: 100%; height: 100px; background-color: #F6F6F6; text-align: center;">
-                    <!-- 菜品名称 -->
+                    <!-- pet名称 -->
                     <div style="height: 5px;"></div>
                     <div>
-                        <label style="font-size: 20px">宠物名称</label>
+                        <label style="font-size: 20px">${petList2[1].name}</label>
                     </div>
                     <!-- 价格 -->
                     <div style="margin-top: 1px">
-                        <label style="color: #696969">10元</label>
+                        <label style="color: #696969">${petList2[1].prices}元</label>
                     </div>
-                    <!-- 购买 -->
                     <div style="margin-top: 1px">
-                        <input type="button" value="+" class="fileinput-button">
+                        <span class="fileinput-button" style="font-size: small;font-family: 宋体">
+                            库存仅剩余:<span style="font-style: italic;color: aqua">${petList2[1].amount} </span>件
+                        </span>
                     </div>
                 </div>
             </div>
 
-            <!-- 商品1 -->
-            <div
-                    style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
+
+            <!-- pet2-4 -->
+            <div style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
                 <!-- 图片 -->
-                <img style="width: 200px; height: 200px"
-                     src="http://localhost/Web_meiTuan/img/p1.png">
+                <a href="pet?petID=${petList3[1].petID}&from=main">
+                    <c:if test="${petList3[1].amount ne 0}">
+                        <img  style="width: 200px; height: 200px"
+                              src="${petList3[1].picture}"
+                              title="pet2-4" alt="图片缺失" class="picture"/>
+                    </c:if>
+
+                    <c:if test="${petList3[1].amount eq 0}">
+                        <img  style="width: 200px; height: 200px"
+                              src=“/”
+                              title="pet2-4" alt="宠物暂时空缺" class="picture"/>
+                    </c:if>
+
+                </a>
                 <div
                         style="width: 100%; height: 100px; background-color: #F6F6F6; text-align: center;">
-                    <!-- 菜品名称 -->
+                    <!-- pet名称 -->
                     <div style="height: 5px;"></div>
                     <div>
-                        <label style="font-size: 20px">宠物名称</label>
+                        <label style="font-size: 20px">${petList3[1].name}</label>
                     </div>
                     <!-- 价格 -->
                     <div style="margin-top: 1px">
-                        <label style="color: #696969">10元</label>
+                        <label style="color: #696969">${petList3[1].prices}元</label>
                     </div>
-                    <!-- 购买 -->
                     <div style="margin-top: 1px">
-                        <input type="button" value="+" class="fileinput-button">
+                        <span class="fileinput-button" style="font-size: small;font-family: 宋体">
+                            库存仅剩余:<span style="font-style: italic;color: aqua">${petList3[1].amount} </span>件
+                        </span>
                     </div>
                 </div>
             </div>
 
-            <!-- 商品1 -->
-            <div
-                    style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
+            <!-- pet2-5 -->
+            <div style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
                 <!-- 图片 -->
-                <img style="width: 200px; height: 200px"
-                     src="http://localhost/Web_meiTuan/img/p1.png">
+                <a href="pet?petID=${petList4[1].petID}&from=main">
+                    <c:if test="${petList4[1].amount ne 0}">
+                        <img  style="width: 200px; height: 200px"
+                              src="${petList4[1].picture}"
+                              title="pet2-5" alt="图片缺失" class="picture"/>
+                    </c:if>
+
+                    <c:if test="${petList4[1].amount eq 0}">
+                        <img  style="width: 200px; height: 200px"
+                              src=“/”
+                              title="pet2-5" alt="宠物暂时空缺" class="picture"/>
+                    </c:if>
+
+                </a>
                 <div
                         style="width: 100%; height: 100px; background-color: #F6F6F6; text-align: center;">
-                    <!-- 菜品名称 -->
+                    <!-- pet名称 -->
                     <div style="height: 5px;"></div>
                     <div>
-                        <label style="font-size: 20px">宠物名称</label>
+                        <label style="font-size: 20px">${petList4[1].name}</label>
                     </div>
                     <!-- 价格 -->
                     <div style="margin-top: 1px">
-                        <label style="color: #696969">10元</label>
+                        <label style="color: #696969">${petList4[1].prices}元</label>
                     </div>
-                    <!-- 购买 -->
                     <div style="margin-top: 1px">
-                        <input type="button" value="+" class="fileinput-button">
+                        <span class="fileinput-button" style="font-size: small;font-family: 宋体">
+                            库存仅剩余:<span style="font-style: italic;color: aqua">${petList4[1].amount} </span>件
+                        </span>
                     </div>
                 </div>
             </div>
 
         </div>
 
+
     </div>
 
-    <!-- 选好了 -->
-    <div style="margin-top: 30px; margin-bottom: 100px;">
-        <input type="submit" class="btn fileinput-button" value="选好了"
-               onclick="ok();" style="width: 200px; height: 70px">
-    </div>
+<%--    <!-- 选好了 -->--%>
+<%--    <div style="margin-top: 30px; margin-bottom: 100px;">--%>
+<%--        <input type="submit" class="btn fileinput-button" value="选好了"--%>
+<%--               onclick="ok();" style="width: 200px; height: 70px">--%>
+<%--    </div>--%>
+
+    <a href="select" style="color: #FF003A;font-size: small">查看全部商品</a>
+
+
 
 </div>
 
