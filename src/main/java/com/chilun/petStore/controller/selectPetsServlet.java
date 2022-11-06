@@ -24,6 +24,7 @@ public class selectPetsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
         String back = req.getParameter("back");
 
         //1.判断是否是从具体宠物界面会来的
@@ -70,6 +71,7 @@ public class selectPetsServlet extends HttpServlet {
 
             //5.获得具体的筛选信息类，并获得对应Page
             if (search == null) {
+                req.getSession().setAttribute("search",null);
                 SelectInfo info = null;
                 if (speciesStr != null) {
                     System.out.println("进入物种筛选");
@@ -83,6 +85,7 @@ public class selectPetsServlet extends HttpServlet {
                 }
                 page = service.getPage(info);
             } else {
+                req.getSession().setAttribute("search",search);
                 SearchAndSelectInfo info = null;
                 if (speciesStr != null) {
                     System.out.println("进入物种筛选");

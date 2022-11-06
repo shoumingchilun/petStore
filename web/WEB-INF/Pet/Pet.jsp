@@ -85,7 +85,9 @@
         }
 
         .description2 {
-
+            text-align:left;
+            width:65%;
+            margin:0 auto;
         }
 
         .inputSubmit{
@@ -99,12 +101,22 @@
             border:1px solid #ffffff
         }
 
-        .returnMain{
-            text-decoration: none;
+        .login{
+            width: auto;
+            height: auto;
+            border-radius: 5px;
+            border-style: solid;
+            border-width: 2px;
+            border-color: #ffa900;
         }
 
-        .continueView{
-            text-decoration: none;
+        .continueViewAndReturnMain{
+            width: auto;
+            height: auto;
+            border-radius: 5px;
+            border-style: solid;
+            border-width: 2px;
+            border-color: #ffa900;
         }
     </style>
 </head>
@@ -138,25 +150,28 @@
                 <br><br>
                 宠物剩余: ${pet.amount }
                 <br><br>
-                <form action="cart" method="post">
-                    加入购物车数量:
+                <form action="AddCart?from=${requestScope.from}" method="post">
+<%--               cart?method=ViewCart     --%>
+                    选购数量:
                     <input type="text" size="1" name="NumOfBuy" value="1" class="inputText"/>
                     <input type="hidden" size="1" name="petID" value="${pet.petID}">
                     <c:if test="${sessionScope.user ne null}">
                         <input type="submit" value="加入购物车" class="inputSubmit"/>
+<%--             如果from参数为select就用 response.sendRedirect("/select?back=true");          --%>
+<%--             要不然就用response.sendRedirect("/main");           --%>
                     </c:if>
                     <br><br>
                     <c:if test="${sessionScope.user eq null}">
-                        <a href="login"class="returnMain">登录以加入购物车</a>
+                        <a href="login"><img class="login" src="${pageContext.request.scheme }://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath}/picture/登录以加入购物车.png" alt="登录以加入购物车"/></a>
                     </c:if>
                 </form>
             </div>
             <div class="divRightDown">
                 <c:if test="${requestScope.from eq 'main'}">
-                    <a href="/" class="returnMain">返回主页</a>
+                    <a href="/main"><img class="continueViewAndReturnMain" src="${pageContext.request.scheme }://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath}/picture/返回主页.png" alt="返回主页"/></a>
                 </c:if>
                 <c:if test="${requestScope.from eq 'select'}">
-                    <a href="select?pageNo=${page.pageNo+1}&back=true" class="continueView">继续浏览</a>
+                    <a href="select?pageNo=${page.pageNo+1}&back=true"><img class="continueViewAndReturnMain" src="${pageContext.request.scheme }://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath}/picture/继续浏览.png" alt="继续浏览"/></a>
                 </c:if>
             </div>
         </center>

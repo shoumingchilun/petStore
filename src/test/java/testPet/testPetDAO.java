@@ -63,4 +63,5 @@ public class testPetDAO {
         SearchAndSelectInfo info2 = new SearchAndSelectInfo(0, 0, 10000,1,"小");
         petDAO.getSearchPet(info2).forEach(System.out::println);
     }
+
 }

@@ -18,4 +18,10 @@ public class testPetService {
         System.out.println(page.getNumOfAllItem());
         page.getList().forEach(System.out::println);
     }
+    @Test
+    public void testGetAllPet(){
+        service.getAllPet(null).forEach(System.out::println);
+        System.out.println();
+        service.getAllPet(1).forEach(System.out::println);
+    }
 }
