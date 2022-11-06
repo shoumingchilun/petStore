@@ -21,6 +21,7 @@ import java.util.Map;
 public class CartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        /*
         int petID = Integer.parseInt(req.getParameter("petID"));
         User user = (User) req.getSession().getAttribute("user");
         int NumOfBuy = Integer.parseInt(req.getParameter("NumOfBuy"));
@@ -28,12 +29,12 @@ public class CartServlet extends HttpServlet {
         CartItem cartItem = new CartItem(petID, (int) user.getUserID(),NumOfBuy);
         CartItemDAO cartItemDAO = new CartItemDAO();
         cartItemDAO.addCartItem(cartItem);
+         */
         doPost(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 
         String gotoMain = req.getParameter("gotoMain");
         String buyNow = req.getParameter("BuyNow");

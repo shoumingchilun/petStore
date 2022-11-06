@@ -1,6 +1,9 @@
 package com.chilun.petStore.controller;
 
+import com.chilun.petStore.dao.specialDAO.CartItemDAO;
+import com.chilun.petStore.pojo.CartItem;
 import com.chilun.petStore.pojo.Pet;
+import com.chilun.petStore.pojo.User;
 import com.chilun.petStore.service.PetService;
 
 import javax.servlet.ServletException;
@@ -17,6 +20,12 @@ public class ChangeNumServlet extends HttpServlet {
             throws ServletException, IOException {
         int petID = Integer.parseInt(request.getParameter("petID"));
         int NumOfBuy = Integer.parseInt(request.getParameter("NumOfBuy"));
+
+        User user = (User) request.getSession().getAttribute("user");
+
+        CartItem cartItem = new CartItem(petID, (int) user.getUserID(),NumOfBuy);
+        CartItemDAO cartItemDAO = new CartItemDAO();
+        cartItemDAO.addCartItem(cartItem);
 
         HttpSession session = request.getSession();
         Map<Pet, Integer> cart = (Map<Pet, Integer>) session.getAttribute("cart");
