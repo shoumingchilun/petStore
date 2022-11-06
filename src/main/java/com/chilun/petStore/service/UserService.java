@@ -3,6 +3,7 @@ package com.chilun.petStore.service;
 import com.chilun.petStore.dao.ConnUtil;
 import com.chilun.petStore.dao.specialDAO.UserDAO;
 import com.chilun.petStore.pojo.User;
+import org.junit.Test;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -16,6 +17,10 @@ public class UserService {
     private UserDAO userDAO=new UserDAO();
     Connection connection;
 
+@Test
+public void test(){
+    System.out.println(login("chilun","123"));
+}
     public boolean login(String account, String password) {
 
         try{
@@ -78,7 +83,55 @@ public class UserService {
 
             userDAO.addUser(user);
         }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                ConnUtil.closeConn();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 
+    public User getUser(String account){
+        try{
+            //获取数据库连接
+            connection= ConnUtil.getConn();
+            //查询账号和密码
+            User user= userDAO.getUserByAcc(account);
+            return user;
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        finally {
+            try {
+                ConnUtil.closeConn();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public void updatePsw(User user){
+        try{
+            //获取数据库连接
+            connection= ConnUtil.getConn();
+            //查询账号和密码
+            userDAO.updateUserById(user);
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                ConnUtil.closeConn();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }

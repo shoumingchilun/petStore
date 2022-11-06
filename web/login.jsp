@@ -12,6 +12,18 @@
     <title>Sign in</title>
     <link rel="stylesheet" type="text/css" href="Login/login.css"/>
     <link rel="stylesheet" type="text/css" href="font/iconfont.css"/>
+    <script src="js/jquery/jquery-3.6.1.min.js"></script>
+
+    <%-- 网站图标   --%>
+    <title>petStore</title>
+    <link rel="shortcut icon" href="img/petStore2.png" type="image/x-icon">
+
+
+    <script>
+        function onfocus(){
+            alert("1密码不为空");
+        }
+    </script>
 
 </head>
 
@@ -21,17 +33,33 @@
     <div id="login-box">
         <h1>Login</h1>
         <div class="input-box">
-            <i class="iconfont">&#xe682;</i>    <!--字体图标-->
-
-            <input type="text" placeholder="Account" name="account"/>
+            <label>
+                <i class="iconfont">&#xe682;</i>    <!--字体图标-->
+                <input type="text" placeholder="Account" name="account"/>
+            </label>
         </div>
         <div class="input-box">
+            <label>
             <i class="iconfont">&#xe676;</i>      <!--字体图标-->
-            <input type="password" placeholder="Password" name="password"/>
+                <input type="password" placeholder="Password" onfocus="onfocus()" name="password" id="psw"/>
+            </label>
         </div>
 
         <div>
-            <a href="Register.jsp"><span style="font-size: x-small; color: aqua; ">Forgot password?</span></a>
+            <a href="ForgetPsw.jsp"><span style="font-size: x-small; color: aqua;float: right ">Forgot password?</span></a>
+        </div>
+
+        <br>
+        <div>
+        <img src="CheckCodeServlet" width="13%" height="20" id="checkCodeImg"/>
+        <script type="text/javascript">
+            $("#checkCodeImg").click(function () {
+                //重新设置属性的值，当点击该图片时
+                $("#checkCodeImg").attr("src","CheckCodeServlet?m="+Math.random());
+            });
+        </script>
+        <input name="checkCode" placeholder="验证码" type="text" />
+
         </div>
         <div>
             <input type="submit" value="Sign in" class="submit">
@@ -45,8 +73,10 @@
 
         <div class="input-box">
             <%
-
                 String msg=(String)request.getAttribute("msg");
+                if(msg==null) {
+                    msg = (String) request.getSession().getAttribute("msg");
+                }
                 if(msg!=null){
                     out.print("<font color='darkorange'>"+msg+"</font>");
                 }
@@ -54,8 +84,6 @@
         </div>
 
     </div>
-
-
 
 </form>
 </body>

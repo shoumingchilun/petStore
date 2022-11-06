@@ -2,6 +2,7 @@ package com.chilun.petStore.dao.specialDAO;
 
 import com.chilun.petStore.dao.BaseDAO;
 import com.chilun.petStore.pojo.User;
+import org.junit.Test;
 
 /**
  * @auther 齿轮
@@ -26,5 +27,11 @@ public class UserDAO extends BaseDAO<User> {
     public void updateUserById(User newUser){
         String sql = "update users set name = ? , address = ? , password = ? , account = ? where userID = ? " ;
         super.executeUpdate(sql,newUser.getName(),newUser.getAddress(),newUser.getPassword(),newUser.getAccount(),newUser.getUserID());
+    }
+
+    @Test
+    public void test(){
+        User user=new User("ppp","123","p");
+        addUser(user);
     }
 }

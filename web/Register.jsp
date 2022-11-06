@@ -11,6 +11,11 @@
     <meta charset="utf-8" />
     <title>Register</title>
     <link rel="stylesheet" type="text/css" href="Login/login.css"/>
+    <script src="js/jquery/jquery-3.6.1.min.js"></script>
+
+    <%-- 网站图标   --%>
+    <title>petStore</title>
+    <link rel="shortcut icon" href="img/petStore2.png" type="image/x-icon">
 
 </head>
 <body>
@@ -19,8 +24,10 @@
         <h1>Register</h1>
 
         <div class="input-box">
-            <label><span style="color: gainsboro">account:</span></label>
-            <span><input type="text" placeholder="Account" name="account"></span>
+            <label>
+                <span style="color: gainsboro">account:</span>
+                <span><input type="text" placeholder="Account" name="account"></span>
+            </label>
             <%
                 //想实现注册完登录栏默认有account
                 String account=(String)request.getSession().getAttribute("account");
@@ -28,15 +35,29 @@
         </div>
 
        <div class="input-box">
-          <label><span style="color: gainsboro">password:</span></label>
-          <span><input type="password" placeholder="Password" name="password"></span>
+          <label>
+              <span style="color: gainsboro">password:</span>
+              <span><input type="password" placeholder="Password" name="password"></span>
+          </label>
        </div>
 
        <div class="input-box">
-          <label><span style="color: gainsboro">Confirm:</span></label>
-          <span><input type="password" placeholder="Confirm" name="password_Confirm"></span>
+          <label>
+              <span style="color: gainsboro">Confirm:</span>
+              <span><input type="password" placeholder="Confirm" name="password_Confirm"></span>
+          </label>
        </div>
-
+        <br>
+        <div>
+            <img src="CheckCodeServlet" width="13%" height="20" id="checkCodeImg"/>
+            <script type="text/javascript">
+                $("#checkCodeImg").click(function () {
+                    //重新设置属性的值，当点击该图片时
+                    $("#checkCodeImg").attr("src","CheckCodeServlet?m="+Math.random());
+                });
+            </script>
+            <input name="checkCode" placeholder="验证码" type="text" />
+        </div>
         <div>
             <input type="submit" value="Sign up" class="submit">
         </div>
