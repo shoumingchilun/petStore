@@ -150,12 +150,15 @@
                 <br><br>
                 宠物剩余: ${pet.amount }
                 <br><br>
-                <form action="cart" method="post">
+                <form action="cart?method=addToCart&from=${requestScope.from}" method="post">
+<%--               cart?method=ViewCart     --%>
                     选购数量:
                     <input type="text" size="1" name="NumOfBuy" value="1" class="inputText"/>
                     <input type="hidden" size="1" name="petID" value="${pet.petID}">
                     <c:if test="${sessionScope.user ne null}">
                         <input type="submit" value="加入购物车" class="inputSubmit"/>
+<%--             如果from参数为select就用 response.sendRedirect("/select");          --%>
+<%--             要不然就用response.sendRedirect("/main");           --%>
                     </c:if>
                     <br><br>
                     <c:if test="${sessionScope.user eq null}">
