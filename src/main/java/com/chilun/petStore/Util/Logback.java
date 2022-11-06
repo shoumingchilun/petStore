@@ -1,6 +1,8 @@
 package com.chilun.petStore.Util;
 
-import org.slf4j.LoggerFactory;
+
+
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.util.logging.ConsoleHandler;
@@ -22,9 +24,10 @@ public class Logback {
         if (log == null) {
             synchronized (Logback.class) {
                 if (log == null) {
-                    Logger log = Logger.getLogger("com.chilun.petStore.logback");
-                    log.setLevel(Level.INFO);
+                    Logger log = Logger.getLogger("com.chilun.petStore.Util.Logback");
+                    log.setLevel(Level.ALL);
                     ConsoleHandler consoleHandler = new ConsoleHandler();
+                    consoleHandler.setLevel(Level.ALL);
                     log.addHandler(consoleHandler);
                     FileHandler fileHandler = new FileHandler("testlog.log", true);
                     fileHandler.setFormatter(new LoggerFormatter());
@@ -34,5 +37,17 @@ public class Logback {
             }
         }
         return log;
+    }
+    @Test
+    public void  a() throws IOException {
+        Logger logger=Logback.getlog();
+        getlog().log(Level.FINEST,"A");
+        logger.finest("finest");
+        logger.finer("finer");
+        logger.fine("fine");
+        logger.config("config");
+        logger.info("info");
+        logger.warning("warning");
+        logger.severe("severe");
     }
 }

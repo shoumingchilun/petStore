@@ -1,6 +1,8 @@
 package com.chilun.petStore.Util.Listener;
 
 import com.chilun.petStore.Util.Logback;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
 import javax.servlet.ServletContextEvent;
@@ -15,17 +17,17 @@ import java.util.logging.*;
  * @author: anthor
  * @date:2022/11/120:10
  */
+
 public class AppListener implements ServletContextListener {
 
-
     @Override
-    public void contextInitialized(ServletContextEvent sce) {
-        ServletContextListener.super.contextInitialized(sce);
+    public void contextInitialized(ServletContextEvent sce)  {
         try {
-            new Logback().getlog().log(Level.INFO, "context has Initialized");
+            Logback.getlog().log(Level.INFO, "context has Initialized");
         } catch (IOException e) {
             e.printStackTrace();
         }
+        ServletContextListener.super.contextInitialized(sce);
     }
 
     @Override
@@ -38,13 +40,12 @@ public class AppListener implements ServletContextListener {
         }
     }
     @Test
-    public void a() throws IOException {
+    public void a()   {
         try {
-            Logback.getlog().log(Level.INFO, "logtest1");
+            Logback.getlog().log(Level.INFO, "logback test ");
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
 

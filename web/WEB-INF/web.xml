@@ -16,7 +16,15 @@
     <listener>
         <listener-class>com.chilun.petStore.Util.Listener.AppListener</listener-class>
     </listener>
-
+<filter>
+    <filter-name>ContextFilter</filter-name>
+    <filter-class>com.chilun.petStore.Util.ContextFilter</filter-class>
+</filter>
+    <filter-mapping>
+        <filter-name>ContextFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
 
 
     <servlet>
