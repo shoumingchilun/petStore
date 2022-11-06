@@ -42,7 +42,7 @@ public class ForgetPsw extends HttpServlet {
             }
         }else {
             request.setAttribute("msg","验证码错误");
-            request.getRequestDispatcher("Register.jsp").forward(request,response);
+            request.getRequestDispatcher("ForgetPsw.jsp").forward(request,response);
         }
 
     }

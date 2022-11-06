@@ -29,9 +29,10 @@ public class UserDAO extends BaseDAO<User> {
         super.executeUpdate(sql,newUser.getName(),newUser.getAddress(),newUser.getPassword(),newUser.getAccount(),newUser.getUserID());
     }
 
-    @Test
-    public void test(){
-        User user=new User("ppp","123","p");
-        addUser(user);
+    //根据用户名更新
+    public void updateUser(User newUser){
+        String sql = "update users set name = ? , address = ? , password = ? , account = ? where account = ? " ;
+        super.executeUpdate(sql,newUser.getName(),newUser.getAddress(),newUser.getPassword(),newUser.getAccount(),newUser.getAccount());
     }
+
 }

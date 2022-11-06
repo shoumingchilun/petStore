@@ -1,4 +1,6 @@
-<%--
+<%@ page import="com.chilun.petStore.dao.specialDAO.PetDAO" %>
+<%@ page import="com.chilun.petStore.dao.SelectInfo" %>
+<%@ page import="com.chilun.petStore.pojo.Pet" %><%--
   Created by IntelliJ IDEA.
   User: pi
   Date: 2022/11/4
@@ -67,16 +69,21 @@
             <a href="index.jsp">小狗</a>
         </span>
         <span align="center" style="margin-right: 20px;">
-            <a href="index.jsp">小兔</a>
+            <a href="index.jsp">小鸟</a>
         </span>
         <span align="center" style="margin-right: 20px;">
-            <a href="index.jsp">小鸟</a>
+            <a href="index.jsp">小兔</a>
         </span>
         <span align="center" style="margin-right: 20px;">
             <a href="index.jsp">其它</a>
         </span>
     </div>
 
+    <%
+        PetDAO petDAO=new PetDAO();
+        List<Pet> petList=petDAO.getSelectPetWithoutPage(new SelectInfo(0,10,1000));
+        request.setAttribute("petList",petList);
+    %>
 
     <!-- 【自定义  列表】 -->
     <div>
@@ -89,11 +96,11 @@
                     style="width: 200px; height: 300px; background-color: #DCDCDC; display: table-cell;">
                 <!-- 图片 -->
                 <a href="pet?from=main">
-                    <c:if test="${pet.picture ne '无'}">
+                    <c:if test="${petList[0].picture ne '无'}">
                         <img  style="width: 200px; height: 200px"
-                              src="picture/animal/cat1.jpeg"
-<%--                                src="${pageContext.request.scheme }://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath}/picture/animal/${pet.picture}"--%>
-                              title="pet1-1" alt="没有这个宠物" class="picture"/>
+                              src="picture/animal/${petList[0].picture}"
+<%--                       src="${pageContext.request.scheme }://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath}/picture/animal/${pet.picture}"--%>
+                              title="pet1-1" alt="宠物暂时空缺" class="picture"/>
                     </c:if>
 <%--                <img style="width: 200px; height: 200px"--%>
 <%--                     src="picture/animal/cat1.jpeg" title="pet1-1" alt="pet1-1">--%>

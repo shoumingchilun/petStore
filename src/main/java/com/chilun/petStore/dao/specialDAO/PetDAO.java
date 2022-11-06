@@ -5,6 +5,7 @@ import com.chilun.petStore.dao.SearchAndSelectInfo;
 import com.chilun.petStore.dao.SelectInfo;
 import com.chilun.petStore.pojo.Pet;
 import com.chilun.petStore.pojo.User;
+import org.junit.Test;
 
 import java.util.List;
 
@@ -52,6 +53,12 @@ public class PetDAO extends BaseDAO<Pet> {
             sql += "prices <= ? && prices >= ?";
             return super.executeQuery(sql, info.getMaxPrice(), info.getMinPrice());
         }
+    }
+
+    @Test
+    public void test(){
+        List petList=getSelectPetWithoutPage(new SelectInfo(0,0,1000));
+        System.out.println(petList);
     }
     //根据SelectInfo获得符合条件的宠物数量
     public long getNumOfSelectPet(SelectInfo info) {
