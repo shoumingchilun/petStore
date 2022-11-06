@@ -13,10 +13,11 @@ import java.util.logging.*;
 class LoggerFormatter extends Formatter {
 
     @Override
-    public String format(LogRecord record) {
+    public String format(java.util.logging.LogRecord record) {
         return "[" + new Date() + "]" + " [" + record.getLevel() + "] "
                 + record.getClass() + record.getMessage() + "\n";
     }
+
 
 }
 

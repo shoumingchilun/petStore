@@ -6,15 +6,15 @@
     <!--监听器-->
     <!--  session监听器  -->
     <listener>
-        <listener-class>com.chilun.petStore.Util.SessionListener</listener-class>
+        <listener-class>com.chilun.petStore.Util.Listener.SessionListener</listener-class>
     </listener>
     <!--  请求监听器  -->
     <listener>
-        <listener-class>com.chilun.petStore.Util.PerfStatListener</listener-class>
+        <listener-class>com.chilun.petStore.Util.Listener.PerfStatListener</listener-class>
     </listener>
     <!--  容器监听器  -->
     <listener>
-        <listener-class>com.chilun.petStore.Util.AppListener</listener-class>
+        <listener-class>com.chilun.petStore.Util.Listener.AppListener</listener-class>
     </listener>
 
 

@@ -1,5 +1,6 @@
-package com.chilun.petStore.Util;
+package com.chilun.petStore.Util.Listener;
 
+import com.chilun.petStore.Util.Logback;
 import org.testng.annotations.Test;
 
 import javax.servlet.ServletContextEvent;
@@ -15,6 +16,7 @@ import java.util.logging.*;
  * @date:2022/11/120:10
  */
 public class AppListener implements ServletContextListener {
+
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
@@ -35,14 +37,16 @@ public class AppListener implements ServletContextListener {
             e.printStackTrace();
         }
     }
-
     @Test
-    public void i() {
+    public void a() throws IOException {
         try {
-            Logback.getlog().log(Level.INFO, "context has Destroyed");
+            Logback.getlog().log(Level.INFO, "logtest1");
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
+
+
 
 }
