@@ -150,7 +150,7 @@
                 <br><br>
                 宠物剩余: ${pet.amount }
                 <br><br>
-                <form action="cart?method=addToCart&from=${requestScope.from}" method="post">
+                <form action="AddCart?from=${requestScope.from}" method="post">
 <%--               cart?method=ViewCart     --%>
                     选购数量:
                     <input type="text" size="1" name="NumOfBuy" value="1" class="inputText"/>
