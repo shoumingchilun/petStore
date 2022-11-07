@@ -97,7 +97,7 @@ public class PetDAO extends BaseDAO<Pet> {
         }
     }
 
-    //获得宠物列表并将数量为零的宠物后置
+    //获得宠物列表并将数量为零宠物后置
     public List<Pet> getOrderOfSelectPet() {
         String sql = "select * from pets where amount > 0 union select * from pets where amount = 0";
         return super.executeQuery(sql);
