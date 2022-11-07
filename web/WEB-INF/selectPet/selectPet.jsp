@@ -5,10 +5,9 @@
   Time: 16:37
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html;charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <html>
 <head>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
@@ -53,25 +52,62 @@
             });
         });
     </script>
+    <style>
+        body {
+            background-image: url("${pageContext.request.scheme }://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath}/picture/SelectPetBackGround.png");
+            background-size: 100% 100%;
+        }
+
+        .search{
+            width: 491px;
+            border: 2px solid transparent;
+            height: 36px;
+            margin: 1px;
+            outline: none;
+        }
+        .price{
+            width: 100px;
+            border: 2px solid transparent;
+            height: 30px;
+            margin: 1px;
+            outline: none;
+        }
+        .species{
+            border: 2px solid transparent;
+            height: 30px;
+            margin: 1px;
+            outline: none;
+        }
+        .picture{
+            width: auto;
+            height: auto;
+            max-width: 100px;
+            max-height: 100px;
+            border-radius: 10px;
+            border-style: solid;
+            border-width: 5px;
+            border-color: #5d5d69;
+        }
+    </style>
 </head>
 <body>
 <center>
     <div>
         <form action="select" method="post">
-            搜索:
+            <b>Search:</b>
             <c:if test="${sessionScope.search ne null}">
-                <input type="text" size="1" name="search" value="${sessionScope.search}"/>
+                <input type="text" size="1" name="search" value="${sessionScope.search}" class="search"/>
             </c:if>
             <c:if test="${sessionScope.search eq null}">
-                <input type="text" size="1" name="search"/>
+                <input type="text" size="1" name="search" class="search"/>
             </c:if>
-            <br>
-            Price:
-            <input type="text" size="1" name="minPrice"/>至
-            <input type="text" size="1" name="maxPrice"/>
+            <br><br>
+            价格区间:
+            <input type="text" size="1" name="minPrice" class="price"/>&nbsp;至
+            <input type="text" size="1" name="maxPrice" class="price"/>
             &nbsp;&nbsp;
-            species:
-            <select name="species">
+           宠物种类:
+            <select name="species" class="species">
                 <option style="display:none"></option>
                 <option value="0">宠物猫</option>
                 <option value="1">宠物狗</option>
@@ -82,7 +118,7 @@
                 <option value="6">节肢动物类</option>
                 <option value="7">其他</option>
             </select>
-            <input type="submit" value="查询"/>
+            <input type="submit" value="筛选"/>
         </form>
     </div>
     <table cellpadding="10">
@@ -93,6 +129,9 @@
                     名称:&nbsp;<a href="pet?from=select&petID=${pet.petID}">${pet.name}</a>
                 </td>
                 <td>
+                    <img src="${pageContext.request.scheme }://${pageContext.request.serverName }:${pageContext.request.serverPort }/${pageContext.request.contextPath}/${pet.picture}" alt="此宠物没有图片" class="picture">
+                </td>
+                <td>
                     简介:&nbsp;${pet.description}
                 </td>
                 <td>
@@ -100,7 +139,6 @@
                 </td>
             </tr>
         </c:forEach>
-
     </table>
 
     <br><br>
