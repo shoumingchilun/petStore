@@ -18,10 +18,6 @@ public class UserService {
     private UserDAO userDAO=new UserDAO();
     Connection connection;
 
-@Test
-public void test(){
-    System.out.println(login("chilun","123"));
-}
     public boolean login(String account, String password) {
 
         try{
@@ -121,7 +117,7 @@ public void test(){
             //获取数据库连接
             connection= ConnUtil.getConn();
             //查询账号和密码
-            userDAO.updateUserById(user);
+            userDAO.updateUser(user);
 
 
         }catch (Exception e){

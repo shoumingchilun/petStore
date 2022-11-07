@@ -9,8 +9,10 @@
          pageEncoding="UTF-8" isELIgnored="false" %>
 
 <%--<%@ include file="modal.jsp"%>--%>
+<p> </p>
+<br>
 
-<div id="footer" class="footer" style="display: block;">
+<div id="footer" class="footer" style="margin-top: 30px; display: block;">
 
     <%-- 品质保障页脚   --%>
     <div id="footer_ensure" class="footer_ensure">
@@ -29,10 +31,10 @@
         </div>
 
         <div class="descColumn">
-            <span class="descColumnTitle">天猫保障</span>
-            <a href="#nowhere">发票保障</a>
-            <a href="#nowhere">售后规则</a>
-            <a href="#nowhere">缺货赔付</a>
+            <span class="descColumnTitle">三缺保障</span>
+            <a href="#nowhere">缺发票保障</a>
+            <a href="#nowhere">缺售后规则</a>
+            <a href="#nowhere">缺缺货赔付</a>
         </div>
 
         <div class="descColumn">
@@ -45,18 +47,17 @@
         </div>
 
         <div class="descColumn">
-            <span class="descColumnTitle">商家服务</span>
-            <a href="#nowhere">天猫规则</a>
-            <a href="#nowhere">商家入驻</a>
-            <a href="#nowhere">商家中心</a>
-            <a href="#nowhere">天猫智库</a>
-            <a href="#nowhere">物流服务</a>
-            <a href="#nowhere">喵言喵语</a>
-            <a href="#nowhere">运营服务</a>
+            <span class="descColumnTitle">五无服务</span>
+            <a href="#nowhere">不退货规则</a>
+            <a href="#nowhere">无商家入驻</a>
+            <a href="#nowhere">无商家中心</a>
+            <a href="#nowhere">无物流服务</a>
+            <a href="#nowhere">无喵言喵语</a>
+            <a href="#nowhere">无运营服务</a>
         </div>
 
         <div class="descColumn">
-            <span class="descColumnTitle">手机天猫</span>
+            <span class="descColumnTitle">手机petStore(cqy微信)</span>
             <a href="#nowhere"><img src="img/site/ma.png"></a>
         </div>
     </div>
@@ -67,40 +68,49 @@
 
     <div id="copyright" class="copyright">
         <div class="white_link" >
-            <a href="#nowhere" >关于天猫</a>
+            <a href="#nowhere" >关于宠物</a>
             <a href="#nowhere" > 帮助中心</a>
             <a href="#nowhere" >开放平台</a>
-            <a href="#nowhere" >  诚聘英才</a>
+            <a href="#nowhere" > 诚聘英才</a>
             <a href="#nowhere" >联系我们</a>
             <a href="#nowhere" >网站合作</a>
             <a href="#nowhere" >法律声明</a>
             <a href="#nowhere" >知识产权</a>
             <a href="#nowhere" >  廉正举报	</a>
         </div>
-        <div class="white_link" >
-            <a href="#nowhere" > 阿里巴巴集团</a><span class="slash">|</span>
-            <a href="#nowhere" > 淘宝网</a><span class="slash">|</span>
-            <a href="#nowhere" >天猫 </a><span class="slash">|</span>
-            <a href="#nowhere" >  聚划算</a><span class="slash">|</span>
-            <a href="#nowhere" >全球速卖通</a><span class="slash">|</span>
-            <a href="#nowhere" >阿里巴巴国际交易市场</a><span class="slash">|</span>
-            <a href="#nowhere" >1688</a><span class="slash">|</span>
-            <a href="#nowhere" >阿里妈妈</a><span class="slash">|</span>
-            <a href="#nowhere" >  阿里旅行·去啊	</a><span class="slash">|</span>
-            <a href="#nowhere" >  阿里云计算	</a><span class="slash">|</span>
-            <a href="#nowhere" >  阿里通信 	</a><span class="slash">|</span>
-            <a href="#nowhere" >  YunOS	</a><span class="slash">|</span>
-            <a href="#nowhere" >  阿里旅行·去啊	</a><span class="slash">|</span>
-            <a href="#nowhere" >   万网	</a><span class="slash">|</span>
-            <a href="#nowhere" >  高德	</a><span class="slash">|</span>
-            <a href="#nowhere" > 优视 	</a><span class="slash">|</span>
-            <a href="#nowhere" >  友盟	</a><span class="slash">|</span>
-            <a href="#nowhere" >  虾米	</a><span class="slash">|</span>
-            <a href="#nowhere" >  天天动听	</a><span class="slash">|</span>
-            <a href="#nowhere" >  来往	</a><span class="slash">|</span>
-            <a href="#nowhere" >  钉钉	</a><span class="slash">|</span>
-            <a href="#nowhere" >  支付宝 		</a>
+        <div class="white_link">
+            <a href="#nowhere">铁11集团</a><span class="slash">|</span>
+            <a href="#nowhere">407团队</a><span class="slash">|</span>
+            <a href="#nowhere">黄梓霖</a><span class="slash">|</span>
+            <a href="#nowhere">徐鸣飞</a><span class="slash">|</span>
+            <a href="#nowhere">陈其阳</a><span class="slash">|</span>
+            <a href="#nowhere">皮佳宇</a>
+
         </div>
+<%--        <div class="white_link" >--%>
+<%--            <a href="#nowhere" > 阿里巴巴集团</a><span class="slash">|</span>--%>
+<%--            <a href="#nowhere" > 淘宝网</a><span class="slash">|</span>--%>
+<%--            <a href="#nowhere" >天猫 </a><span class="slash">|</span>--%>
+<%--            <a href="#nowhere" >  聚划算</a><span class="slash">|</span>--%>
+<%--            <a href="#nowhere" >全球速卖通</a><span class="slash">|</span>--%>
+<%--            <a href="#nowhere" >阿里巴巴国际交易市场</a><span class="slash">|</span>--%>
+<%--            <a href="#nowhere" >1688</a><span class="slash">|</span>--%>
+<%--            <a href="#nowhere" >阿里妈妈</a><span class="slash">|</span>--%>
+<%--            <a href="#nowhere" >  阿里旅行·去啊	</a><span class="slash">|</span>--%>
+<%--            <a href="#nowhere" >  阿里云计算	</a><span class="slash">|</span>--%>
+<%--            <a href="#nowhere" >  阿里通信 	</a><span class="slash">|</span>--%>
+<%--            <a href="#nowhere" >  YunOS	</a><span class="slash">|</span>--%>
+<%--            <a href="#nowhere" >  阿里旅行·去啊	</a><span class="slash">|</span>--%>
+<%--            <a href="#nowhere" >   万网	</a><span class="slash">|</span>--%>
+<%--            <a href="#nowhere" >  高德	</a><span class="slash">|</span>--%>
+<%--            <a href="#nowhere" > 优视 	</a><span class="slash">|</span>--%>
+<%--            <a href="#nowhere" >  友盟	</a><span class="slash">|</span>--%>
+<%--            <a href="#nowhere" >  虾米	</a><span class="slash">|</span>--%>
+<%--            <a href="#nowhere" >  天天动听	</a><span class="slash">|</span>--%>
+<%--            <a href="#nowhere" >  来往	</a><span class="slash">|</span>--%>
+<%--            <a href="#nowhere" >  钉钉	</a><span class="slash">|</span>--%>
+<%--            <a href="#nowhere" >  支付宝 		</a>--%>
+<%--        </div>--%>
 
         <div class="license">
             <span>增值电信业务经营许可证： 浙B2-20110446</span>

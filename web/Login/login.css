@@ -4,6 +4,22 @@ body{
     background-size:100%;
     background-position: 0px -50px;
 }
+/*top里用到的css*/
+nav.top0 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #bce8f1;
+}
+.redColor {
+    color: #ff0036;
+}
+.pull-right {
+    float: right !important;
+}
+
+/*login界面*/
 #login-box{
     background-color: #00000068;
     border-radius: 13px;

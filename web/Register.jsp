@@ -13,11 +13,27 @@
     <link rel="stylesheet" type="text/css" href="Login/login.css"/>
     <script src="js/jquery/jquery-3.6.1.min.js"></script>
 
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
+
     <%-- 网站图标   --%>
     <title>petStore</title>
     <link rel="shortcut icon" href="img/petStore2.png" type="image/x-icon">
 
 </head>
+
+<nav class="top0">
+    <%-- 返回首页图标   --%>
+    <a href="main" style="margin-left: 20px">
+        <span style="color: #c40000; margin: 0px;" class="glyphicon glyphicon-home redColor"></span>
+    </a>
+
+    <span style="margin-left: 20px">喵，欢迎来到petStore</span>
+
+    <span style="margin-left: 20px" >
+          <a href="">关于我</a>
+        </span>
+</nav>
+
 <body>
 <form action="register" method="post">
     <div id="login-box">

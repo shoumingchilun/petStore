@@ -131,7 +131,7 @@
                 暂无图片
             </c:if>
             <c:if test="${pet.picture ne '无'}">
-                <img src="${pageContext.request.scheme }://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath}/picture/${pet.picture}"
+                <img src="${pageContext.request.scheme }://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath}${pet.picture}"
                      width="500" alt="没有这个宠物" class="picture"/>
             </c:if>
         </div>
@@ -150,12 +150,15 @@
                 <br><br>
                 宠物剩余: ${pet.amount }
                 <br><br>
-                <form action="cart" method="post">
+                <form action="AddCart?from=${requestScope.from}" method="post">
+<%--               cart?method=ViewCart     --%>
                     选购数量:
                     <input type="text" size="1" name="NumOfBuy" value="1" class="inputText"/>
                     <input type="hidden" size="1" name="petID" value="${pet.petID}">
                     <c:if test="${sessionScope.user ne null}">
                         <input type="submit" value="加入购物车" class="inputSubmit"/>
+<%--             如果from参数为select就用 response.sendRedirect("/select?back=true");          --%>
+<%--             要不然就用response.sendRedirect("/main");           --%>
                     </c:if>
                     <br><br>
                     <c:if test="${sessionScope.user eq null}">

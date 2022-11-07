@@ -7,6 +7,8 @@ import com.chilun.petStore.pojo.Pet;
 import com.chilun.petStore.view.Page;
 import com.chilun.petStore.view.PetPageFactory;
 
+import java.util.List;
+
 /**
  * @auther 齿轮
  * @create 2022-10-30-17:54
@@ -33,7 +35,15 @@ public class PetService {
     }
 
     //根据PetID获得对应的宠物类
-    public Pet getPetByID(long Pet){
+    public Pet getPetByID(long Pet) {
         return dao.getPetById(Pet);
+    }
+
+    //获得全部宠物
+    public List<Pet> getAllPet(Integer species) {
+        if (species == null) {
+            return dao.getSelectPetWithoutPage(new SelectInfo(0, 0, Integer.MAX_VALUE));
+        } else
+            return dao.getSelectPetWithoutPage(new SelectInfo(0, 0, Integer.MAX_VALUE, species));
     }
 }

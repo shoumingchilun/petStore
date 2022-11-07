@@ -1,6 +1,7 @@
 package com.chilun.petStore.pojo;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -10,12 +11,9 @@ import java.util.List;
  */
 public class Cart {
     private int userID;
-    private List<CartItem> items;
+    private HashMap<Pet,Integer> Pets;
     private BigDecimal totalPrice;
 
     public Cart() {
-    }
-    public BigDecimal getTotalPrice(){
-        return totalPrice;
     }
 }
