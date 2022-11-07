@@ -1,9 +1,9 @@
 package com.chilun.petStore.Util;
 
 
-
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 public class Logback {
 
     private volatile static Logger log = null;
+    private volatile static FileHandler fileHandler = null;
 
     public static Logger getlog() throws IOException {
         if (log == null) {
@@ -29,19 +30,40 @@ public class Logback {
                     ConsoleHandler consoleHandler = new ConsoleHandler();
                     consoleHandler.setLevel(Level.ALL);
                     log.addHandler(consoleHandler);
-                    FileHandler fileHandler = new FileHandler("testlog.log", true);
-                    fileHandler.setFormatter(new LoggerFormatter());
-                    log.addHandler(fileHandler);
+                    try {
+                        String filePath = "E:\\" + File.separator + "logs";
+                        String logPath = "LoggingDemo.log";
+                        File fi = new File(filePath);
+                        if ((fi.exists()) && (fi.isDirectory())) {
+                            logPath = filePath + File.separator + logPath;
+                        } else if (!fi.exists()) {
+                            try {
+                                fi.mkdirs();
+                                logPath = filePath + File.separator + logPath;
+                            } catch (Exception localException) {
+                            }
+                        }
+                        if (fileHandler == null) {
+                            fileHandler = new FileHandler(logPath, true);//true表示日志内容在文件中追加
+                            fileHandler.setLevel(Level.ALL);//级别为ALL，记录所有消息
+                            fileHandler.setFormatter(new LoggerFormatter());
+                        }
+                        log.addHandler(fileHandler);
+
+                    } catch (Throwable e) {
+                        System.out.println("创建文件失败！" + e.getMessage());
+                    }
                     return log;
                 }
             }
         }
         return log;
     }
+
     @Test
-    public void  a() throws IOException {
-        Logger logger=Logback.getlog();
-        getlog().log(Level.FINEST,"A");
+    public void a() throws IOException {
+        Logger logger = Logback.getlog();
+        getlog().log(Level.FINEST, "A");
         logger.finest("finest");
         logger.finer("finer");
         logger.fine("fine");

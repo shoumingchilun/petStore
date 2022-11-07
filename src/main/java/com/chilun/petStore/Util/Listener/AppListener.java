@@ -1,8 +1,6 @@
 package com.chilun.petStore.Util.Listener;
 
 import com.chilun.petStore.Util.Logback;
-import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
 import javax.servlet.ServletContextEvent;
@@ -19,6 +17,8 @@ import java.util.logging.*;
  */
 
 public class AppListener implements ServletContextListener {
+
+    private Logger logger;
 
     @Override
     public void contextInitialized(ServletContextEvent sce)  {
@@ -39,15 +39,4 @@ public class AppListener implements ServletContextListener {
             e.printStackTrace();
         }
     }
-    @Test
-    public void a()   {
-        try {
-            Logback.getlog().log(Level.INFO, "logback test ");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
 }

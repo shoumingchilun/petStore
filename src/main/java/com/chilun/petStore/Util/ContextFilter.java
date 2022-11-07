@@ -5,9 +5,11 @@ import com.chilun.petStore.pojo.User;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.sound.sampled.DataLine;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 
 /**
  * @Title:
@@ -16,15 +18,10 @@ import java.util.logging.Logger;
  * @date:2022/11/621:05
  */
 public class ContextFilter implements Filter {
-    private Logger logger;
+
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        try {
-            logger = Logback.getlog();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
         Filter.super.init(filterConfig);
     }
 
@@ -34,7 +31,6 @@ public class ContextFilter implements Filter {
         User user = (User) session.getAttribute("loginUser");
         if(user==null)
             servletRequest.getRequestDispatcher("login.jsp").forward(servletRequest,servletResponse);
-        logger.log(Level.FINEST, "ContextFilter doFilter");
         filterChain.doFilter(servletRequest, servletResponse);
     }
 

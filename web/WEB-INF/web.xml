@@ -16,13 +16,15 @@
     <listener>
         <listener-class>com.chilun.petStore.Util.Listener.AppListener</listener-class>
     </listener>
-<filter>
-    <filter-name>ContextFilter</filter-name>
-    <filter-class>com.chilun.petStore.Util.ContextFilter</filter-class>
-</filter>
+
+
+    <filter>
+        <filter-name>ContextFilter</filter-name>
+        <filter-class>com.chilun.petStore.Util.ContextFilter</filter-class>
+    </filter>
     <filter-mapping>
         <filter-name>ContextFilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/info.jsp</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
 
@@ -73,36 +75,36 @@
     </servlet-mapping>
 
     <servlet-mapping>
-    <servlet-name>default</servlet-name>
-    <url-pattern>*.jpg</url-pattern>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.jpg</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-      <servlet-name>default</servlet-name>
-      <url-pattern>*.png</url-pattern>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.png</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>*.jpeg</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-    <servlet-name>default</servlet-name>
-    <url-pattern>*.ico</url-pattern>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.ico</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-    <servlet-name>default</servlet-name>
-    <url-pattern>*.gif</url-pattern>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.gif</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-    <servlet-name>default</servlet-name>
-    <url-pattern>*.js</url-pattern>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.js</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-    <servlet-name>default</servlet-name>
-    <url-pattern>*.css</url-pattern>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.css</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-    <servlet-name>default</servlet-name>
-    <url-pattern>*.ttf</url-pattern>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.ttf</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>default</servlet-name>
