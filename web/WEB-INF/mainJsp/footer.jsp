@@ -14,11 +14,13 @@
 
 <div id="footer" class="footer" style="margin-top: 30px; display: block;">
 
-    <%-- 品质保障页脚   --%>
+    <%-- footer   --%>
     <div id="footer_ensure" class="footer_ensure">
         <a href="#nowhere">
-            <img src="img/site/ensure.png">
+            <img src="img/welcome.jpeg" style="width:600px;height:180px;left: auto">
+            <img src="img/petStore4.jpeg" style="width:600px;height:180px;right:auto">
         </a>
+
     </div>
 
     <%-- 详情       --%>
@@ -64,63 +66,39 @@
 
     <div style="clear:both"></div>
 
-    <img id="cateye" class="cateye" src="img/site/cateye.png">
+<%--    <img id="cateye" class="cateye" src="img/site/cateye.png">--%>
 
-    <div id="copyright" class="copyright">
-        <div class="white_link" >
-            <a href="#nowhere" >关于宠物</a>
-            <a href="#nowhere" > 帮助中心</a>
-            <a href="#nowhere" >开放平台</a>
-            <a href="#nowhere" > 诚聘英才</a>
-            <a href="#nowhere" >联系我们</a>
-            <a href="#nowhere" >网站合作</a>
-            <a href="#nowhere" >法律声明</a>
-            <a href="#nowhere" >知识产权</a>
-            <a href="#nowhere" >  廉正举报	</a>
-        </div>
-        <div class="white_link">
-            <a href="#nowhere">铁11集团</a><span class="slash">|</span>
-            <a href="#nowhere">407团队</a><span class="slash">|</span>
-            <a href="#nowhere">黄梓霖</a><span class="slash">|</span>
-            <a href="#nowhere">徐鸣飞</a><span class="slash">|</span>
-            <a href="#nowhere">陈其阳</a><span class="slash">|</span>
-            <a href="#nowhere">皮佳宇</a>
+    <div  style="border-top-style: solid;border-top-width: 1px;border-top-color: #5bc0de;padding-top: 20px;margin: 0 10px">
+            <div style="margin-top: 10px" >
+                <a href="#nowhere" >关于宠物</a>
+                <a href="#nowhere" > 帮助中心</a>
+                <a href="#nowhere" >开放平台</a>
+                <a href="#nowhere" > 诚聘英才</a>
+                <a href="#nowhere" >联系我们</a>
+                <a href="#nowhere" >网站合作</a>
+                <a href="#nowhere" >法律声明</a>
+                <a href="#nowhere" >知识产权</a>
+                <a href="#nowhere" >  廉正举报	</a>
 
-        </div>
-<%--        <div class="white_link" >--%>
-<%--            <a href="#nowhere" > 阿里巴巴集团</a><span class="slash">|</span>--%>
-<%--            <a href="#nowhere" > 淘宝网</a><span class="slash">|</span>--%>
-<%--            <a href="#nowhere" >天猫 </a><span class="slash">|</span>--%>
-<%--            <a href="#nowhere" >  聚划算</a><span class="slash">|</span>--%>
-<%--            <a href="#nowhere" >全球速卖通</a><span class="slash">|</span>--%>
-<%--            <a href="#nowhere" >阿里巴巴国际交易市场</a><span class="slash">|</span>--%>
-<%--            <a href="#nowhere" >1688</a><span class="slash">|</span>--%>
-<%--            <a href="#nowhere" >阿里妈妈</a><span class="slash">|</span>--%>
-<%--            <a href="#nowhere" >  阿里旅行·去啊	</a><span class="slash">|</span>--%>
-<%--            <a href="#nowhere" >  阿里云计算	</a><span class="slash">|</span>--%>
-<%--            <a href="#nowhere" >  阿里通信 	</a><span class="slash">|</span>--%>
-<%--            <a href="#nowhere" >  YunOS	</a><span class="slash">|</span>--%>
-<%--            <a href="#nowhere" >  阿里旅行·去啊	</a><span class="slash">|</span>--%>
-<%--            <a href="#nowhere" >   万网	</a><span class="slash">|</span>--%>
-<%--            <a href="#nowhere" >  高德	</a><span class="slash">|</span>--%>
-<%--            <a href="#nowhere" > 优视 	</a><span class="slash">|</span>--%>
-<%--            <a href="#nowhere" >  友盟	</a><span class="slash">|</span>--%>
-<%--            <a href="#nowhere" >  虾米	</a><span class="slash">|</span>--%>
-<%--            <a href="#nowhere" >  天天动听	</a><span class="slash">|</span>--%>
-<%--            <a href="#nowhere" >  来往	</a><span class="slash">|</span>--%>
-<%--            <a href="#nowhere" >  钉钉	</a><span class="slash">|</span>--%>
-<%--            <a href="#nowhere" >  支付宝 		</a>--%>
-<%--        </div>--%>
+                <span class="license" style="margin-top: 0px;position: absolute;right: 100px">
+                <img src="img/carousel/pet1.jpg" style="height: 100px;width: 150px;margin-right: 20px">
+                <img src="img/carousel/pet2.jpg" style="height: 100px;width: 150px;margin-right: 20px">
+                <img src="img/carousel/pet3.jpg" style="height: 100px;width: 150px;margin-right: 20px">
+                <img src="img/carousel/pet4.jpg" style="height: 100px;width: 150px;margin-right: 20px">
 
-        <div class="license">
-            <span>增值电信业务经营许可证： 浙B2-20110446</span>
-            <span>网络文化经营许可证：浙网文[2015]0295-065号</span>
-            <div class="copyRightYear">&copy; 2003-2020 TMALL.COM 版权所有</div>
-            <div>
-                <img src="img/site/copyRight1.jpg">
-                <img src="img/site/copyRight2.jpg">
+                 </span>
             </div>
-        </div>
+            <div style="margin-top: 10px ">
+                <a href="#nowhere"style="color: #0f0f0f">铁11集团</a><span class="slash">|</span>
+                <a href="#nowhere"style="color: #0f0f0f">407团队</a><span class="slash">|</span>
+                <a href="#nowhere"style="color: #0f0f0f">黄梓霖</a><span class="slash">|</span>
+                <a href="#nowhere"style="color: #0f0f0f">徐鸣飞</a><span class="slash">|</span>
+                <a href="#nowhere"style="color: #0f0f0f">陈其阳</a><span class="slash">|</span>
+                <a href="#nowhere"style="color: #0f0f0f">皮佳宇</a>
+            </div>
+
+
+
     </div>
 </div>
 

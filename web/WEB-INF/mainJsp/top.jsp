@@ -49,6 +49,6 @@
             购物车 <strong style="color: #c40000">${cartTotalItemNumber}</strong> 件
         </a>
 
-        <a href="">关于我</a>
+        <a href="help.html">关于我</a>
     </span>
 </nav>
