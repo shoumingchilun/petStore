@@ -51,7 +51,7 @@
 
         <br>
         <div>
-        <img src="CheckCodeServlet" width="13%" height="20" id="checkCodeImg"/>
+            <img src="CheckCodeServlet" width="13%" height="20" id="checkCodeImg"/>
         <script type="text/javascript">
             $("#checkCodeImg").click(function () {
                 //重新设置属性的值，当点击该图片时

@@ -40,8 +40,8 @@
     </c:if>
 
     <span style="margin-right: 200px" class="pull-right">
-        <a href="forebought">我的订单</a>
-        <a href="forecart">
+        <a href="/forebought">我的订单</a>
+        <a href="/CartServlet">
             <span style="color: #c40000;" class="glyphicon glyphicon-shopping-cart redColor"></span>
             购物车 <strong style="color: #c40000">${cartTotalItemNumber}</strong> 件
         </a>
