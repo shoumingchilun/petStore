@@ -12,6 +12,7 @@
 
 <link rel="stylesheet" type="text/css" href="Login/login.css"/>
 <link rel="stylesheet" type="text/css" href="font/iconfont.css"/>
+
 <style>
     body{
         background-image: url(Login/pet3.jpg);
@@ -35,7 +36,7 @@
         border-bottom: #a6ead2 2px solid;
         padding: 5px 10px;
         outline: none;
-        color: #FFFFFF;
+        color: aqua;
     }
 
     .submit{
@@ -55,18 +56,21 @@
     }
 
 </style>
+<%
+    User user=(User)request.getSession().getAttribute("user");
+    String account=user.getAccount();
+%>
+<h1 style="font-family: 华文隶书;text-align: center;color: aqua"><span style="color: gold"><%=account%></span> Account-info</h1>
 
-<h1 style="font-family: 华文隶书;text-align: center;color: aqua">Account-info</h1>
-
-<form action="register" method="post" class="container">
+<form action="accountInfo" method="post" class="container">
         <div class="info">
             <label>
-                <span style="color: #ee9900">account:</span>
-            <input type="text" placeholder="Account" name="account">
+                <span style="color: #ee9900">nickname:</span>
+            <input type="text" placeholder="Nickname" name="name">
             </label>
             <%
                 //想实现注册完登录栏默认有account
-                String account=(String)request.getSession().getAttribute("account");
+                account=(String)request.getSession().getAttribute("account");
             %>
         </div>
 

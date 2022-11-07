@@ -131,7 +131,7 @@
                 暂无图片
             </c:if>
             <c:if test="${pet.picture ne '无'}">
-                <img src="${pageContext.request.scheme }://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath}/picture/${pet.picture}"
+                <img src="${pageContext.request.scheme }://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath}${pet.picture}"
                      width="500" alt="没有这个宠物" class="picture"/>
             </c:if>
         </div>
