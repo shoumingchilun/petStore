@@ -3,8 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-
-
     <servlet>
         <servlet-name>mainServlet</servlet-name>
         <servlet-class>com.chilun.petStore.controller.MyMainServlet</servlet-class>
@@ -29,7 +27,24 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>CartServlet</servlet-name>
-        <url-pattern>/cart</url-pattern>
+        <url-pattern>/CartServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ChangeNumServlet</servlet-name>
+        <servlet-class>com.chilun.petStore.controller.ChangeNumServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangeNumServlet</servlet-name>
+        <url-pattern>/ChangeNumServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>addCartServlet</servlet-name>
+        <servlet-class>com.chilun.petStore.controller.addCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addCartServlet</servlet-name>
+        <url-pattern>/AddCart</url-pattern>
     </servlet-mapping>
 
     <servlet>
