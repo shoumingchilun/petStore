@@ -27,10 +27,6 @@ public class ContextFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-//        HttpSession session=((HttpServletRequest)servletRequest).getSession();
-//        User user = (User) session.getAttribute("loginUser");
-//        if(user==null)
-//            servletRequest.getRequestDispatcher("login.jsp").forward(servletRequest,servletResponse);
         filterChain.doFilter(servletRequest, servletResponse);
     }
 

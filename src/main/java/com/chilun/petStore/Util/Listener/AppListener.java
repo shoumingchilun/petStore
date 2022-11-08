@@ -18,7 +18,6 @@ import java.util.logging.*;
 
 public class AppListener implements ServletContextListener {
 
-    private Logger logger;
 
     @Override
     public void contextInitialized(ServletContextEvent sce)  {
