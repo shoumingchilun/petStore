@@ -51,6 +51,16 @@
         margin-right: 40px;
         display: inline-block;
     }
+     .location{
+         font-size: 35px;
+         margin-left:100px;
+         font-family: 隶书;
+         color: red;
+         position:absolute;
+         left:0px;
+         text-align: left;
+         writing-mode: vertical-lr;
+     }
 
 </style>
 
@@ -59,27 +69,41 @@
 <div align="center">
     <!-- 【导航栏】 -->
     <div  style="margin-top: 20px;">
-        <span class="head">
+        <span class="head" style="text-align: left">
             <span style="margin-left: 10px" class="glyphicon glyphicon-th-list"></span>
             <span style="margin-left: 10px">宠物分类</span>
         </span>
 
-        <span align="center" style="margin-right: 20px;">
-            <a href="index.jsp">小猫</a>
+        <span align="center" style="margin-right: 20px;font-size: 15px">
+            <a href="select?species=0">小猫</a>
         </span>
-        <span align="center" style="margin-right: 20px;">
-            <a href="index.jsp">小狗</a>
+        <span align="center" style="margin-right: 20px;font-size: 15px">
+            <a href="select?species=1">小狗</a>
         </span>
-        <span align="center" style="margin-right: 20px;">
-            <a href="index.jsp">小鸟</a>
+        <span align="center" style="margin-right: 20px;font-size: 15px">
+            <a href="select?species=3">小鸟</a>
         </span>
-        <span align="center" style="margin-right: 20px;">
-            <a href="index.jsp">小兔</a>
+        <span align="center" style="margin-right: 20px;font-size: 15px">
+            <a href="select?species=2">小兔</a>
         </span>
-        <span align="center" style="margin-right: 20px;">
-            <a href="index.jsp">其它</a>
+        <span align="center" style="margin-right: 20px;font-size: 15px">
+            <a href="select?species=4">乌龟</a>
         </span>
+        <span align="center" style="margin-right: 20px;font-size: 15px">
+            <a href="select?species=5">小鱼</a>
+        </span>
+        <span align="center" style="margin-right: 20px;font-size: 15px">
+            <a href="select?species=6">蟋蟀</a>
+        </span>
+        <span align="center" style="margin-right: 20px;font-size: 15px">
+            <a href="select?species=7">小仓鼠</a>
+        </span>
+
     </div>
+</div>
+
+    <div class="location">热销榜</div>
+
 
     <%
         PetService petService=new PetService();
@@ -90,6 +114,7 @@
         }
 
     %>
+<div align="center">
 
     <!-- 【自定义  列表】 -->
     <div>

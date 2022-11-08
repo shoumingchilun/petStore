@@ -11,6 +11,10 @@
 <html>
 <head>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" type="text/css" href="Login/login.css"/>
+
     <title>筛选宠物</title>
     <script type="text/javascript">
         $(function () {
@@ -39,18 +43,6 @@
                 window.location.href = href;
             });
         })
-    </script>
-    <script type="text/javascript">
-        $(function () {
-            $("a").each(function () {
-                this.onclick = function () {
-                    var serializeVal = $(":hidden").serialize();
-                    var href = this.href + "&" + serializeVal;
-                    window.location.href = href;
-                    return false;
-                };
-            });
-        });
     </script>
     <style>
         body {
@@ -90,6 +82,18 @@
         }
     </style>
 </head>
+<%--<nav class="top0">--%>
+    <%-- 返回首页图标   --%>
+    <a href="main" style="margin-left: 20px">
+        <span style="color: #c40000; margin: 0px;" class="glyphicon glyphicon-home redColor"></span>
+    </a>
+
+    <span style="margin-left: 20px">喵，欢迎来到petStore</span>
+
+    <span style="margin-left: 20px" >
+          <a href="help.html">关于我</a>
+        </span>
+<%--</nav>--%>
 <body>
 <center>
     <div>

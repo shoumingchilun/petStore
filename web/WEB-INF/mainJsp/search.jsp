@@ -19,17 +19,29 @@
         text-transform:uppercase
 
     }
+
+   .position{
+       position: relative;
+
+   }
+
 </style>
 
 <a href="main">
     <img id="logo" src="img/petgif1.gif" class="logo" style="width: 240px;height: 130px">
 </a>
 
-<form action="main" method="get" >
+<form action="select" method="get" >
     <div class="searchDiv">
-        <input name="keyword" class="searchInput" type="text" value="${param.keyword}" placeholder="一起来撸猫吧！ ">
+        <input name="search" class="searchInput" type="text" value="${param.keyword}" placeholder="一起来撸猫吧！ ">
         <button  type="submit" class="searchButton">搜 索</button>
+
+        <img src="img/petStore3.jpeg" style="width: 250px;height: 100px;position: absolute;right: 40px;top: 60px;">
+
     </div>
+
+
+
     <div>
         <c:if test="${ not empty sessionScope.user}">
             <div style="text-align: center;position:relative;margin-top: 10px"class="font" >
