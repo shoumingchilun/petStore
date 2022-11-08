@@ -39,7 +39,7 @@
 
     <c:if test="${empty user}">
         <a href="login">请登录</a>
-        <a href="register">免费注册</a>
+        <a href="Register.jsp">免费注册</a>
     </c:if>
 
     <span style="margin-right: 200px" class="pull-right">
