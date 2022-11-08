@@ -129,8 +129,8 @@
             <input type="submit" value="筛选"/>
         </form>
     </div>
-    <table cellpadding="10" style="border:4px #957740 dashed;text-align: center;width: 600px;" cellpadding="10" border='1'>
-        <tr style="">
+    <table cellpadding="10" style="border:4px #957740 dashed;text-align: center;width: 600px;height: 700px" cellpadding="10" border='1'>
+        <tr style="font-size: 20px">
             <td>
                 名称
             </td>
@@ -146,7 +146,7 @@
         </tr>
         <c:forEach items="${page.list }" var="pet">
             <tr>
-                <td style="text-align: left">
+                <td >
                     <img src="${pageContext.request.scheme }://${pageContext.request.serverName }:${pageContext.request.serverPort }/${pageContext.request.contextPath}/${pet.picture}"
                          alt="此宠物没有图片" class="picture">
                 </td>
