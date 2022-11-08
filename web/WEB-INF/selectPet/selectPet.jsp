@@ -48,6 +48,7 @@
         body {
             background-image: url("${pageContext.request.scheme }://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath}/picture/SelectPetBackGround.png");
             background-size: 100% 100%;
+            background-position: 0px;
         }
 
         .search{
