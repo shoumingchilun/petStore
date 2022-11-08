@@ -16,7 +16,6 @@ import java.util.Map;
 public class addCartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
         int petID = Integer.parseInt(req.getParameter("petID"));
         PetService pet = new PetService();
         Pet i = pet.getPetByID(petID);
@@ -32,12 +31,12 @@ public class addCartServlet extends HttpServlet {
         }
         session.setAttribute("cart",cart);
         String from = req.getParameter("from");
-        if(from == "select") resp.sendRedirect("/select?back=true");
+        if(from.equals("select")) resp.sendRedirect("/select?back=true");
         else resp.sendRedirect("/main");
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        doGet(req, resp);
     }
 }

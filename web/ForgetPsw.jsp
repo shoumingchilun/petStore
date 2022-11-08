@@ -30,7 +30,7 @@
   <span style="margin-left: 20px">喵，欢迎来到petStore</span>
 
   <span style="margin-left: 20px" >
-          <a href="">关于我</a>
+          <a href="help.html">关于我</a>
         </span>
 </nav>
 
