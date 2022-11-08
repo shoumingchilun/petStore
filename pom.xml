@@ -8,6 +8,12 @@
     <artifactId>petStore</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>
+
+
+
+
+
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -47,11 +53,14 @@
             <version>4.13.1</version>
             <scope>compile</scope>
         </dependency>
+
     </dependencies>
 
     <properties>
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
+            <!-- 主要依赖库的版本定义 -->
+
     </properties>
 
 </project>
