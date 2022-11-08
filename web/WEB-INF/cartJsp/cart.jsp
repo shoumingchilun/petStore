@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Chenqiyang
@@ -17,7 +18,8 @@
         if (NumOfBuy < 1) {
             if (confirm("是否确认要删除此商品？")) {
                 NumOfBuy = 0;
-            } else {
+            }
+            else {
                 NumOfBuy = 1;
             }
         }
@@ -47,45 +49,50 @@
     <c:forEach items="${cart}" var="entry" varStatus="vs">
         <table width="80%" border="0" cellspacing="0" style="margin-left:150px;text-align:center">
             <tr>
-                <td width="10%">${vs.NumOfBuy}</td>
+                <td width="10%">${vs.count}</td>
                 <td width="30%">${entry.key.name}</td>
-                <td width="10%">${entry.key.prices}</td>
+                <td width="10%">${entry.key.prices }</td>
                 <td width="20%">
                     <!-- 减少商品数量 -->
-                    <input type="button" value='-' style="width:20px"
-                           onclick="changeNum('${entry.key.petID}','${entry.value-1 }','${entry.key.pnum }')">
+                    <input type="button" value='-' style="width:20px" onclick="changeNum('${entry.key.petID}','${entry.value-1 }','${entry.key.amount}')">
                     <!-- 商品数量显示 -->
                     <input name="text" type="text" value="${entry.value}" style="width:40px;text-align:center">
                     <!-- 添加商品数量 -->
-                    <input type="button" value='+' style="width:20px"
-                           onclick="changeNum('${entry.key.petID}','${entry.value+1 }','${entry.key.pnum }')">
+                    <input type="button" value='+' style="width:20px" onclick="changeNum('${entry.key.petID}','${entry.value+1 }','${entry.key.amount}')">
                 </td>
-                <td width="10%">${entry.key.pnum}</td>
+                <td width="10%">${entry.key.amount}</td>
                 <td width="10%">${entry.key.prices*entry.value}</td>
                 <td width="10%">
                     <!-- 删除商品 -->
-                    <a href="ChangeNumServlet?id=${entry.key.petID}&NumOfBuy=0"
-                       style="color: #FF0000; font-weight: bold">X</a>
+                    <a href="ChangeNumServlet?petID=${entry.key.petID}&NumOfBuy=0" style="color: #FF0000; font-weight: bold">X</a>
                 </td>
             </tr>
         </table>
-        <c:set value="${total+ entry.key.prices*entry.value}" var="total"/>
+        <table>
+          <br>
+          <br>
+          <br>
+          <div style="padding-left:690px;">
+              <input type="submit" value="继续购物" name="gotoMain"/>
+              <input type="button" value='立即买单' onclick="changeNum('${entry.key.petID}','${entry.value}','${entry.key.amount}')">
+          </div>
+        </table>
+        <c:set value="${total+ entry.key.prices * entry.value}" var="total"/>
     </c:forEach>
     <br>
     <!-- 合计信息 -->
     <table style="margin-left:1000px">
         <tr>
-            <td><font style="color: #FF6600; font-weight: bold">合计： ${total}元</font>
+            <td><font style="color: #FF6600; font-weight: bold">合计：  ${total}元</font>
             </td>
         </tr>
     </table>
-    <br>
-    <br>
-    <br>
-    <div style="padding-left:690px;">
-        <input type="submit" value="继续购物" name="gotoMain"/>
-        <input type="submit" value="立即买单" name="BuyNow"/>
-    </div>
+<%--    <br>--%>
+<%--    <br>--%>
+<%--    <br>--%>
+<%--    <div style="padding-left:690px;">--%>
+<%--        <input type="submit" value="继续购物" name="gotoMain"/>--%>
+<%--    </div>--%>
 </form>
 </body>
 </html>

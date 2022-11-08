@@ -12,7 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+
 
 public class ChangeNumServlet extends HttpServlet {
 
@@ -21,24 +25,30 @@ public class ChangeNumServlet extends HttpServlet {
         int petID = Integer.parseInt(request.getParameter("petID"));
         int NumOfBuy = Integer.parseInt(request.getParameter("NumOfBuy"));
 
-        User user = (User) request.getSession().getAttribute("user");
-
-        CartItem cartItem = new CartItem(petID, (int) user.getUserID(),NumOfBuy);
-        CartItemDAO cartItemDAO = new CartItemDAO();
-        cartItemDAO.addCartItem(cartItem);
-
         HttpSession session = request.getSession();
-        Map<Pet, Integer> cart = (Map<Pet, Integer>) session.getAttribute("cart");
+        Map<Pet, Integer> cart = (ConcurrentHashMap<Pet, Integer>) session.getAttribute("cart");
         PetService ps=new PetService();
         Pet b=ps.getPetByID(petID);
+        long newamount = b.getAmount();
         //如果商品数据为0，就删除对象
-        if(NumOfBuy==0) {
-            cart.clear();
-        }else {
-            cart.clear();
+        if(NumOfBuy==0)
+        {
+            Set<Pet> keys=new HashSet<>(cart.keySet());
+            for(Pet key1:keys){
+                if(key1.getPetID()==petID)
+                cart.remove(key1);
+            }
+        }
+        else if(NumOfBuy >0){
+            Set<Pet> keys=new HashSet<>(cart.keySet());
+            for(Pet key1:keys){
+                if(key1.getPetID()==petID)
+                    cart.remove(key1);
+            }
             cart.put(b,NumOfBuy);
         }
-
+        b.setAmount(newamount-NumOfBuy);
+        ps.getDao().updatePetById(b);
         request.getRequestDispatcher("/CartServlet").forward(request, response);
     }
 

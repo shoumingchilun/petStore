@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @auther 齿轮
@@ -21,15 +23,6 @@ import java.util.Map;
 public class CartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        /*
-        int petID = Integer.parseInt(req.getParameter("petID"));
-        User user = (User) req.getSession().getAttribute("user");
-        int NumOfBuy = Integer.parseInt(req.getParameter("NumOfBuy"));
-
-        CartItem cartItem = new CartItem(petID, (int) user.getUserID(),NumOfBuy);
-        CartItemDAO cartItemDAO = new CartItemDAO();
-        cartItemDAO.addCartItem(cartItem);
-         */
         doPost(req, resp);
     }
 
@@ -37,12 +30,8 @@ public class CartServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String gotoMain = req.getParameter("gotoMain");
-        String buyNow = req.getParameter("BuyNow");
 
-        if (buyNow != null) {
-            req.getRequestDispatcher("/WEB-INF/cartJsp/order.jsp").forward(req, resp);
-        }
-        else if (gotoMain != null) {
+        if (gotoMain != null) {
             resp.sendRedirect("/main");
         } else
             req.getRequestDispatcher("/WEB-INF/cartJsp/cart.jsp").forward(req, resp);
