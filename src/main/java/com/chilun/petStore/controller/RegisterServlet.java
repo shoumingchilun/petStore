@@ -30,6 +30,7 @@ public class RegisterServlet extends HttpServlet {
         String checkCode=request.getParameter("checkCode");
 
         //先判断验证码是否正确
+        //这里有个bug
         if(request.getSession().getAttribute("code").equals(checkCode)){
             //判断账户是否已经存在
             if(userService.isExist(account)){

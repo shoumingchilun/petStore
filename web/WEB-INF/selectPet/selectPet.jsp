@@ -48,29 +48,33 @@
         body {
             background-image: url("${pageContext.request.scheme }://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath}/picture/SelectPetBackGround.png");
             background-size: 100% 100%;
+            background-position: 0px;
         }
 
-        .search{
+        .search {
             width: 491px;
             border: 2px solid transparent;
             height: 36px;
             margin: 1px;
             outline: none;
         }
-        .price{
+
+        .price {
             width: 100px;
             border: 2px solid transparent;
             height: 30px;
             margin: 1px;
             outline: none;
         }
-        .species{
+
+        .species {
             border: 2px solid transparent;
             height: 30px;
             margin: 1px;
             outline: none;
         }
-        .picture{
+
+        .picture {
             width: auto;
             height: auto;
             max-width: 100px;
@@ -110,7 +114,7 @@
             <input type="text" size="1" name="minPrice" class="price"/>&nbsp;至
             <input type="text" size="1" name="maxPrice" class="price"/>
             &nbsp;&nbsp;
-           宠物种类:
+            宠物种类:
             <select name="species" class="species">
                 <option style="display:none"></option>
                 <option value="0">宠物猫</option>
@@ -125,21 +129,35 @@
             <input type="submit" value="筛选"/>
         </form>
     </div>
-    <table cellpadding="10">
-
+    <table cellpadding="10" style="border:4px #957740 dashed;text-align: center;width: 600px;height: 700px" cellpadding="10" border='1'>
+        <tr style="font-size: 20px">
+            <td>
+                名称
+            </td>
+            <td>
+                商品
+            </td>
+            <td>
+                简介
+            </td>
+            <td>
+                价格
+            </td>
+        </tr>
         <c:forEach items="${page.list }" var="pet">
             <tr>
-                <td>
-                    名称:&nbsp;<a href="pet?from=select&petID=${pet.petID}">${pet.name}</a>
+                <td >
+                    <img src="${pageContext.request.scheme }://${pageContext.request.serverName }:${pageContext.request.serverPort }/${pageContext.request.contextPath}/${pet.picture}"
+                         alt="此宠物没有图片" class="picture">
                 </td>
                 <td>
-                    <img src="${pageContext.request.scheme }://${pageContext.request.serverName }:${pageContext.request.serverPort }/${pageContext.request.contextPath}/${pet.picture}" alt="此宠物没有图片" class="picture">
+                    <a href="pet?from=select&petID=${pet.petID}">${pet.name}</a>
                 </td>
                 <td>
-                    简介:&nbsp;${pet.description}
+                        ${pet.description}
                 </td>
                 <td>
-                    价格:&nbsp;${pet.prices }
+                        ${pet.prices }
                 </td>
             </tr>
         </c:forEach>

@@ -56,10 +56,11 @@ public class PetDAO extends BaseDAO<Pet> {
     }
 
     @Test
-    public void test(){
-        List petList=getSelectPetWithoutPage(new SelectInfo(0,0,1000));
+    public void test() {
+        List petList = getOrderOfSelectPet();
         System.out.println(petList);
     }
+
     //根据SelectInfo获得符合条件的宠物数量
     public long getNumOfSelectPet(SelectInfo info) {
         String sql = "select count(*) from pets where ";
@@ -95,4 +96,11 @@ public class PetDAO extends BaseDAO<Pet> {
             return (long) super.executeComplexQuery(sql, info.getSearchStr(), info.getMaxPrice(), info.getMinPrice())[0];
         }
     }
+
+    //获得宠物列表并将数量为零宠物后置
+    public List<Pet> getOrderOfSelectPet() {
+        String sql = "select * from pets where amount > 0 union select * from pets where amount = 0";
+        return super.executeQuery(sql);
+    }
+
 }

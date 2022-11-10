@@ -39,6 +39,14 @@
         <url-pattern>/ChangeNumServlet</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>BuyServlet</servlet-name>
+        <servlet-class>com.chilun.petStore.controller.BuyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BuyServlet</servlet-name>
+        <url-pattern>/BuyServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>addCartServlet</servlet-name>
         <servlet-class>com.chilun.petStore.controller.addCartServlet</servlet-class>
     </servlet>
@@ -46,7 +54,15 @@
         <servlet-name>addCartServlet</servlet-name>
         <url-pattern>/AddCart</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>foreboughtServlet</servlet-name>
+        <servlet-class>com.chilun.petStore.controller.foreboughtServlet</servlet-class>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>foreboughtServlet</servlet-name>
+        <url-pattern>/forebought</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>PetServlet</servlet-name>
         <servlet-class>com.chilun.petStore.controller.PetServlet</servlet-class>
