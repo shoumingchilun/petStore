@@ -24,7 +24,7 @@
                 NumOfBuy = 1;
             }
         }
-        if (amount == 0) {
+        if (NumOfBuy > amount) {
             alert("购买数量不能大于库存数量！");
             NumOfBuy = amount;
         }
@@ -32,22 +32,8 @@
     }
 </script>
 <script type="text/javascript">
-    function BuyNum(petID, NumOfBuy, amount) {
+    function BuyNum(petID, NumOfBuy) {
         NumOfBuy = parseInt(NumOfBuy);
-        amount = parseInt(amount);
-        if (NumOfBuy < 1) {
-            if (confirm("是否确认要删除此商品？")) {
-                NumOfBuy = 0;
-            }
-            else
-            {
-                NumOfBuy = 1;
-            }
-        }
-        if (amount == 0) {
-            alert("购买数量不能大于库存数量！");
-            NumOfBuy = amount;
-        }
         location.href = "${pageContext.request.contextPath}/BuyServlet?petID=" + petID + "&NumOfBuy=" + NumOfBuy;
     }
 </script>
@@ -90,7 +76,7 @@
                     <a href="ChangeNumServlet?id=${entry.key.petID}&num=0" style="color: #FF0000; font-weight: bold">X</a>
                 </td>
                 <td width="10%">
-                    <input type="button" value='立即购买' style="width:100px" onclick="BuyNum('${entry.key.petID}','${entry.value}','${entry.key.amount }')">
+                    <input type="button" value='立即购买' style="width:100px" onclick="BuyNum('${entry.key.petID}','${entry.value}')">
                 </td>
             </tr>
         </table>
