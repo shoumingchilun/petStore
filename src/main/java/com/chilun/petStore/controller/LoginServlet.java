@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request,response);
         } else if (request.getSession().getAttribute("code").equals(checkCode)) {
             if(userService.login(account,password)){
-                User user=new User(account,password,"p");
+                User user=userService.getUser(account);
                 request.getSession().setAttribute("user",user);
                 response.sendRedirect("/");
             }else{

@@ -29,7 +29,13 @@ public class addCartServlet extends HttpServlet {
             cart = new ConcurrentHashMap<Pet,Integer>();
         }
         if(cart!=null){
-            cart.put(i,NumOfBuy);
+            if(cart.containsKey(i))
+            {
+                cart.put(i,cart.get(i)+NumOfBuy);
+            }
+            else {
+                cart.put(i,NumOfBuy);
+            }
         }
         session.setAttribute("cart",cart);
 
