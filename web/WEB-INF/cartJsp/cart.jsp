@@ -73,7 +73,7 @@
                 <td width="10%">${entry.key.prices*entry.value}</td>
                 <td width="10%">
                     <!-- 删除商品 -->
-                    <a href="ChangeNumServlet?id=${entry.key.petID}&num=0" style="color: #FF0000; font-weight: bold">X</a>
+                    <a href="ChangeNumServlet?petID=${entry.key.petID}&NumOfBuy=0" style="color: #FF0000; font-weight: bold">X</a>
                 </td>
                 <td width="10%">
                     <input type="button" value='立即购买' style="width:100px" onclick="BuyNum('${entry.key.petID}','${entry.value}')">
