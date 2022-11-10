@@ -1,13 +1,15 @@
 package com.chilun.petStore.pojo;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 /**
  * @auther 齿轮
  * @create 2022-10-26-15:16
  * 宠物类
  */
-public class Pet {
+public class
+Pet {
     private long petID;
     private long species;
     private String name;
@@ -16,6 +18,28 @@ public class Pet {
     private BigDecimal prices;
     private long amount;//可购买数量
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if(obj == null) {
+            return false;
+        }
+        if(obj instanceof Pet) {
+            Pet i = (Pet) obj;
+            if(this.getPetID() == i.getPetID() && this.getName().equals(i.getName())) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+    @Override
+    public int hashCode() {
+        return (int) (this.getPetID()+this.getName().hashCode());
+    }
 
     public Pet() {
     }
