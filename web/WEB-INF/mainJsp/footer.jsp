@@ -18,7 +18,7 @@
     <div id="footer_ensure" class="footer_ensure">
         <a href="#nowhere">
             <img src="img/welcome.jpeg" style="width:600px;height:180px;left: auto">
-            <img src="img/petStore4.jpeg" style="width:600px;height:180px;right:auto">
+            <img src="img/petStore4.jpg" style="width:600px;height:180px;right:auto">
         </a>
 
     </div>
