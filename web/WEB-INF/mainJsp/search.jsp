@@ -56,7 +56,7 @@
 
         //将点击的内容放到搜索框
         function setSearch_onclick(div) {
-            $(".searchInput").val(div.innerText);
+            $(".search").val(div.innerText);
             $("#context1").css("display", "none");
         }
     </script>
