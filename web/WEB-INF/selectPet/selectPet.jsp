@@ -11,13 +11,41 @@
 <html>
 <head>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-    <link href="css/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" type="text/css" href="Login/login.css"/>
 
     <title>筛选宠物</title>
     <script type="text/javascript">
         $(function () {
+            $(".search").keyup(function () {
+                var content = $(this).val();
+                //如果当前搜索内容为空，无须进行查询
+                if (content === "") {
+                    $("#context1").css("display", "none");
+                    return;
+                }
+                //由于浏览器的缓存机制 所以我们每次传入一个时间
+                var time = new Date().getTime();
+                $.ajax({
+                    type: "get",
+                    //新建一个名为LikedPetAjaxServlet的servlet
+                    url: "${pageContext.request.contextPath}/LikedPetAjaxServlet",
+                    data: {name: content, time: time},
+                    success: function (data) {
+                        //拼接html
+                        var res = data.split(",");
+                        console.log(data);//获得成功了吗
+                        var html = "";
+                        for (var i = 0; i < res.length; i++) {
+                            //每一个div还有鼠标移出、移入点击事件
+                            html += "<div onclick='setSearch_onclick(this)' onmouseout='changeBackColor_out(this)' onmouseover='changeBackColor_over(this)' style='text-align: left'>" + res[i] + "</div>";
+                        }
+                        $("#context1").html(html);
+                        //显示为块级元素
+                        $("#context1").css("display", "block");
+                    }
+                });
+            });
             $("#pageNo").change(function () {
                 var val = $(this).val();
                 val = $.trim(val);
@@ -43,6 +71,22 @@
                 window.location.href = href;
             });
         })
+
+        //鼠标移动到内容上
+        function changeBackColor_over(div) {
+            $(div).css("background-color", "#CCCCCC");
+        }
+
+        //鼠标离开内容
+        function changeBackColor_out(div) {
+            $(div).css("background-color", "");
+        }
+
+        //将点击的内容放到搜索框
+        function setSearch_onclick(div) {
+            $(".search").val(div.innerText);
+            $("#context1").css("display", "none");
+        }
     </script>
     <style>
         body {
@@ -87,14 +131,14 @@
     </style>
 </head>
 <%--<nav class="top0">--%>
-    <%-- 返回首页图标   --%>
-    <a href="main" style="margin-left: 20px">
-        <span style="color: #c40000; margin: 0px;" class="glyphicon glyphicon-home redColor"></span>
-    </a>
+<%-- 返回首页图标   --%>
+<a href="main" style="margin-left: 20px">
+    <span style="color: #c40000; margin: 0px;" class="glyphicon glyphicon-home redColor"></span>
+</a>
 
-    <span style="margin-left: 20px">喵，欢迎来到petStore</span>
+<span style="margin-left: 20px">喵，欢迎来到petStore</span>
 
-    <span style="margin-left: 20px" >
+<span style="margin-left: 20px">
           <a href="help.html">关于我</a>
         </span>
 <%--</nav>--%>
@@ -104,10 +148,16 @@
         <form action="select" method="post">
             <b>Search:</b>
             <c:if test="${sessionScope.search ne null}">
-                <input type="text" size="1" name="search" value="${sessionScope.search}" class="search"/>
+                <input type="text" size="1" name="search" value="${sessionScope.search}" class="search" id="name"/>
+                <div id="context1"
+                     style="background-color:white;display:none;position: absolute;width: 491px;left: 497px">
+                </div>
             </c:if>
             <c:if test="${sessionScope.search eq null}">
-                <input type="text" size="1" name="search" class="search"/>
+                <input type="text" size="1" name="search" class="search" id="name"/>
+                <div id="context1"
+                     style="background-color:white;display:none;position: absolute;width: 491px;left: 497px">
+                </div>
             </c:if>
             <br><br>
             价格区间:
@@ -129,7 +179,8 @@
             <input type="submit" value="筛选"/>
         </form>
     </div>
-    <table cellpadding="10" style="border:4px #957740 dashed;text-align: center;width: 600px;height: 700px" cellpadding="10" border='1'>
+    <table cellpadding="10" style="border:4px #957740 dashed;text-align: center;width: 600px;height: 700px"
+           cellpadding="10" border='1'>
         <tr style="font-size: 20px">
             <td>
                 名称
@@ -146,7 +197,7 @@
         </tr>
         <c:forEach items="${page.list }" var="pet">
             <tr>
-                <td >
+                <td>
                     <img src="${pageContext.request.scheme }://${pageContext.request.serverName }:${pageContext.request.serverPort }/${pageContext.request.contextPath}/${pet.picture}"
                          alt="此宠物没有图片" class="picture">
                 </td>

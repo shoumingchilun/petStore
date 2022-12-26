@@ -49,11 +49,16 @@ public class PetService {
     }
 
     //获得与名称相似的Pets中存在的名称
-    public List<String> getLikedName(String name) {
-        List<String> list = new ArrayList<>();
-        dao.getLikedName(name).forEach((pet) -> {
-            list.add(pet.getName());
-        });
-        return list;
+    public String getLikedName(String name) {
+        String res = new String("");
+        List<Pet> likedName = dao.getLikedName(name);
+        for (int i=0;i<likedName.size();i++) {
+            if(i>0){
+                res+=","+likedName.get(i).getName();
+            }else{
+                res+=likedName.get(i).getName();
+            }
+        }
+        return res;
     }
 }

@@ -44,6 +44,15 @@
         <servlet-name>selectPets</servlet-name>
         <url-pattern>/select</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>likedPets</servlet-name>
+        <servlet-class>com.chilun.petStore.controller.LikedPetAjaxServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>likedPets</servlet-name>
+        <url-pattern>/LikedPetAjaxServlet</url-pattern>
+    </servlet-mapping>
+    
 
     <servlet>
         <servlet-name>CartServlet</servlet-name>

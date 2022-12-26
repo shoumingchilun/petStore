@@ -38,9 +38,4 @@ public class testPetService {
 
     }
 
-    @Test
-    public void testGetLike(){
-        PetService petService = new PetService();
-        System.out.println(petService.getLikedName("蟋"));
-    }
 }
