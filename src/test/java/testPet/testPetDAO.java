@@ -64,4 +64,8 @@ public class testPetDAO {
         petDAO.getSearchPet(info2).forEach(System.out::println);
     }
 
+    @Test
+    public void testLike(){
+        System.out.println(petDAO.getLikedName("蟋"));
+    }
 }
