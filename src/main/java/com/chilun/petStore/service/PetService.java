@@ -7,6 +7,7 @@ import com.chilun.petStore.pojo.Pet;
 import com.chilun.petStore.view.Page;
 import com.chilun.petStore.view.PetPageFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -45,5 +46,19 @@ public class PetService {
             return dao.getSelectPetWithoutPage(new SelectInfo(0, 0, Integer.MAX_VALUE));
         } else
             return dao.getSelectPetWithoutPage(new SelectInfo(0, 0, Integer.MAX_VALUE, species));
+    }
+
+    //获得与名称相似的Pets中存在的名称
+    public String getLikedName(String name) {
+        String res = new String("");
+        List<Pet> likedName = dao.getLikedName(name);
+        for (int i=0;i<likedName.size();i++) {
+            if(i>0){
+                res+=","+likedName.get(i).getName();
+            }else{
+                res+=likedName.get(i).getName();
+            }
+        }
+        return res;
     }
 }

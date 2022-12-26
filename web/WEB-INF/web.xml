@@ -3,6 +3,30 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <!--监听器-->
+    <!--  session监听器  -->
+    <listener>
+        <listener-class>com.chilun.petStore.Util.Listener.SessionListener</listener-class>
+    </listener>
+    <!--  请求监听器  -->
+    <listener>
+        <listener-class>com.chilun.petStore.Util.Listener.PerfStatListener</listener-class>
+    </listener>
+    <!--  容器监听器  -->
+    <listener>
+        <listener-class>com.chilun.petStore.Util.Listener.AppListener</listener-class>
+    </listener>
+
+
+    <filter>
+        <filter-name>ContextFilter</filter-name>
+        <filter-class>com.chilun.petStore.Util.ContextFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ContextFilter</filter-name>
+        <url-pattern>/CartServlet</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
     <servlet>
         <servlet-name>mainServlet</servlet-name>
         <servlet-class>com.chilun.petStore.controller.MyMainServlet</servlet-class>
@@ -20,6 +44,15 @@
         <servlet-name>selectPets</servlet-name>
         <url-pattern>/select</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>likedPets</servlet-name>
+        <servlet-class>com.chilun.petStore.controller.LikedPetAjaxServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>likedPets</servlet-name>
+        <url-pattern>/LikedPetAjaxServlet</url-pattern>
+    </servlet-mapping>
+    
 
     <servlet>
         <servlet-name>CartServlet</servlet-name>
