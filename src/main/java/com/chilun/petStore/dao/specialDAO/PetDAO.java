@@ -105,7 +105,7 @@ public class PetDAO extends BaseDAO<Pet> {
 
     //根据name进行模糊查询
     public List<Pet> getLikedName(String name){
-        String sql = "select * from pets where name like CONCAT('%',?,'%');";
+        String sql = "select * from pets where name like CONCAT('%',?,'%') limit 0,8;";
         return super.executeQuery(sql,name);
     }
 }
